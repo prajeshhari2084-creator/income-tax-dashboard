@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taxation Laws & Practice — Practical Sums Dashboard</title>
+<style>
+  :root {
+    --navy: #0f2542;
+    --navy2: #16345c;
+    --gold: #c9962c;
+    --gold-light: #f3d98a;
+    --paper: #fbf9f4;
+    --card: #ffffff;
+    --ink: #1c2430;
+    --muted: #5c6b7a;
+    --line: #e2decf;
+    --green: #1f7a4d;
+    --green-bg: #eaf6ef;
+    --red: #a3312a;
+    --red-bg: #fbeceb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+    color: #fff;
+    padding: 28px 24px 22px;
+    text-align: center;
+    border-bottom: 4px solid var(--gold);
+  }
+  header h1 { margin: 0 0 6px; font-size: 1.65rem; letter-spacing: 0.3px; }
+  header p { margin: 2px 0; color: var(--gold-light); font-size: 0.92rem; font-family: Arial, sans-serif; }
+  .subject-tag {
+    display: inline-block; margin-top: 10px; background: rgba(255,255,255,0.1);
+    border: 1px solid var(--gold); color: var(--gold-light); padding: 4px 14px;
+    border-radius: 20px; font-family: Arial, sans-serif; font-size: 0.78rem; letter-spacing: 0.5px;
+  }
+
+  nav.tabs {
+    position: sticky; top: 0; z-index: 20; display: flex; justify-content: center;
+    gap: 8px; background: var(--paper); padding: 14px 10px 10px; border-bottom: 1px solid var(--line);
+    flex-wrap: wrap; font-family: Arial, sans-serif;
+  }
+  nav.tabs button {
+    background: var(--card); border: 1.5px solid var(--line); color: var(--navy);
+    padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  nav.tabs button .n { display: block; font-size: 0.68rem; font-weight: 400; color: var(--muted); margin-top: 2px; }
+  nav.tabs button.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+  nav.tabs button.active .n { color: var(--gold-light); }
+  nav.tabs button:hover:not(.active) { border-color: var(--gold); }
+
+  main { max-width: 900px; margin: 0 auto; padding: 24px 18px 60px; }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .panel-intro {
+    font-family: Arial, sans-serif; color: var(--muted); font-size: 0.9rem; text-align: center;
+    margin-bottom: 22px; padding: 10px 16px; background: var(--green-bg);
+    border: 1px dashed var(--green); border-radius: 8px;
+  }
+
+  /* On-page contents / jump links */
+  .jumplist {
+    font-family: Arial, sans-serif; font-size: 0.8rem; background: var(--card);
+    border: 1px solid var(--line); border-radius: 10px; padding: 10px 16px; margin-bottom: 22px;
+  }
+  .jumplist strong { color: var(--navy); display: block; margin-bottom: 6px; }
+  .jumplist a { color: var(--navy2); text-decoration: none; margin-right: 14px; display: inline-block; }
+  .jumplist a:hover { text-decoration: underline; color: var(--gold); }
+
+  .topic {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    margin-bottom: 26px; overflow: hidden; box-shadow: 0 2px 6px rgba(15,37,66,0.05);
+  }
+  .topic-head {
+    background: var(--navy); color: #fff; padding: 14px 20px; display: flex;
+    justify-content: space-between; align-items: center; font-family: Arial, sans-serif;
+  }
+  .topic-head h2 { margin: 0; font-size: 1.05rem; }
+  .topic-head .head-right { display: flex; align-items: center; gap: 8px; }
+  .topic-head .marks { background: var(--gold); color: var(--navy); font-weight: 800; font-size: 0.72rem; padding: 3px 10px; border-radius: 20px; }
+  .topic-head .chapter-tag { background: rgba(255,255,255,0.12); border: 1px solid var(--gold-light); color: var(--gold-light); font-weight: 700; font-size: 0.68rem; padding: 3px 9px; border-radius: 20px; white-space: nowrap; }
+  .topic-body { padding: 18px 22px 22px; }
+
+  .rule-box {
+    background: #fff9ec; border: 1px solid var(--gold); border-left: 5px solid var(--gold);
+    border-radius: 8px; padding: 14px 18px; margin-bottom: 18px; font-size: 0.92rem;
+  }
+  .rule-box .rb-label {
+    font-family: Arial, sans-serif; font-weight: 800; font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.5px; color: #fff; background: var(--navy); display: inline-block;
+    padding: 3px 9px; border-radius: 4px; margin: 10px 0 6px;
+  }
+  .rule-box .rb-label:first-child { margin-top: 0; }
+  .rule-box ul, .rule-box ol { margin: 4px 0 10px; padding-left: 22px; }
+  .rule-box li { margin-bottom: 4px; }
+  .rule-box p.rb-note { margin: 4px 0 10px; }
+
+  table.ref-table {
+    width: 100%; border-collapse: collapse; margin: 6px 0 12px; font-size: 0.86rem;
+    font-family: Arial, sans-serif; background: #fff;
+  }
+  table.ref-table th, table.ref-table td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; }
+  table.ref-table th { background: var(--navy2); color: #fff; font-size: 0.76rem; }
+  table.ref-table td.num { text-align: right; font-family: 'Courier New', monospace; }
+
+  .trap {
+    font-family: Arial, sans-serif; font-size: 0.82rem; background: var(--red-bg);
+    border: 1px solid var(--red); border-radius: 6px; padding: 8px 12px; margin: 8px 0 4px; color: var(--red);
+  }
+  .trap strong { color: var(--red); }
+
+  .q-block { border: 1px solid var(--line); border-radius: 10px; margin-bottom: 16px; background: #fdfcf9; }
+  .q-head {
+    padding: 12px 16px; font-weight: 700; font-family: Arial, sans-serif; font-size: 0.85rem;
+    color: var(--navy2); background: #f1ede0; border-bottom: 1px solid var(--line); border-radius: 10px 10px 0 0;
+  }
+  .q-text { padding: 14px 16px 4px; font-size: 0.97rem; }
+  .steps { padding: 4px 16px 16px; }
+  .step { margin: 10px 0; padding-left: 14px; border-left: 3px solid var(--navy2); }
+  .step .label {
+    font-family: Arial, sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;
+    color: var(--gold); font-weight: 700; background: var(--navy); display: inline-block;
+    padding: 2px 8px; border-radius: 4px; margin-bottom: 4px;
+  }
+  .calc { font-family: 'Courier New', monospace; background: #eef2f6; padding: 8px 12px; border-radius: 6px; margin: 4px 0; font-size: 0.93rem; overflow-x: auto; white-space: pre-line; }
+  .answer-final {
+    margin: 10px 16px 16px; padding: 10px 14px; background: var(--green-bg); border: 1px solid var(--green);
+    border-radius: 8px; font-weight: 700; color: var(--green); font-family: Arial, sans-serif; font-size: 0.92rem;
+  }
+
+  table.calc-table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.9rem; }
+  table.calc-table th, table.calc-table td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; }
+  table.calc-table th { background: var(--navy); color: #fff; font-family: Arial, sans-serif; font-size: 0.8rem; }
+  table.calc-table td.num { text-align: right; font-family: 'Courier New', monospace; }
+  table.calc-table tr.total td { font-weight: 700; background: #f6f3e9; }
+
+  .practice { border: 1px dashed var(--navy2); background: #f4f7fb; }
+  .practice .q-head { background: #dde7f2; }
+  .reveal-btn {
+    font-family: Arial, sans-serif; background: var(--navy); color: #fff; border: none; padding: 8px 16px;
+    border-radius: 6px; font-size: 0.82rem; cursor: pointer; margin: 4px 16px 12px;
+  }
+  .reveal-btn:hover { background: var(--navy2); }
+  .solution-hidden { display: none; }
+
+  .exc-tag {
+    display: inline-block; font-family: Arial, sans-serif; font-size: 0.68rem; font-weight: 700;
+    background: var(--navy2); color: #fff; padding: 2px 8px; border-radius: 10px; margin-left: 8px; vertical-align: middle;
+  }
+
+  footer { text-align: center; font-family: Arial, sans-serif; color: var(--muted); font-size: 0.78rem; padding: 20px; border-top: 1px solid var(--line); }
+
+  @media print {
+    nav.tabs { display: none; }
+    .panel { display: block !important; }
+    .reveal-btn { display: none; }
+    .solution-hidden { display: block !important; }
+    header { background: var(--navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.25rem; }
+    nav.tabs button { padding: 8px 12px; font-size: 0.78rem; }
+    .topic-head h2 { font-size: 0.92rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Taxation Laws &amp; Practice — BBA303-5</h1>
+  <p>Unit I (Basic Concepts, Residential Status &amp; Incidence of Tax) + Unit II (Income from Salary)</p>
+  <span class="subject-tag">Practical sums only · AY 2026-27 · CIA exam pattern</span>
+</header>
+
+<nav class="tabs">
+  <button class="tab-btn active" data-tab="start">Before You Start<span class="n">Regimes · slab rates · rebate</span></button>
+  <button class="tab-btn" data-tab="m5">5-Mark Sums<span class="n">Residential status · Gratuity · Pension · Total income</span></button>
+  <button class="tab-btn" data-tab="m10">10-Mark Sums<span class="n">Incidence of tax · Allowances</span></button>
+  <button class="tab-btn" data-tab="m15">15-Mark Sums<span class="n">Full salary computation</span></button>
+</nav>
+
+<main>
+
+<!-- ================= BEFORE YOU START ================= -->
+<section class="panel active" id="start">
+  <div class="panel-intro">Read this once before attempting any sum below — it tells you which regime these problems use and gives you the slab rates, rebate and standard deduction figures the examiner expects you to know by heart.</div>
+
+  <div class="topic">
+    <div class="topic-head"><h2>Old Regime vs New Regime — what changes</h2></div>
+    <div class="topic-body">
+      <div class="rule-box">
+        <div class="rb-label">Which regime do THESE practical sums use?</div>
+        <p class="rb-note"><strong>Old Regime.</strong> HRA exemption, most allowance exemptions (u/s 10(14)), and Chapter VI-A deductions (80C/80D/80TTA etc.) are only meaningful under the old regime — the new regime strips almost all of them out. Since your syllabus tests HRA/allowances/deductions computations, every worked sum and practice sum in this dashboard follows the <strong>old regime</strong> unless the question says otherwise.</p>
+
+        <div class="rb-label">Standard Deduction (salaried employees &amp; pensioners)</div>
+        <table class="ref-table">
+          <tr><th>Regime</th><th>Amount</th></tr>
+          <tr><td>Old Regime</td><td>₹50,000</td></tr>
+          <tr><td>New Regime</td><td>₹75,000</td></tr>
+        </table>
+
+        <div class="rb-label">What the New Regime does NOT allow (main ones to remember)</div>
+        <ul>
+          <li>No HRA exemption (Sec 10(13A))</li>
+          <li>No LTA exemption (Sec 10(5))</li>
+          <li>No Chapter VI-A deductions — 80C, 80D, 80TTA/80TTB, 80E, 80G etc. (except employer's NPS contribution u/s 80CCD(2) and a couple of others)</li>
+          <li>No deduction for interest on home loan — self-occupied property</li>
+          <li>Most Sec 10(14) special allowances lose exemption — a few survive: transport allowance for a disabled employee, conveyance allowance for official duty, and daily/tour allowance for official travel</li>
+        </ul>
+        <div class="rb-label">What still works the SAME in both regimes</div>
+        <ul>
+          <li>Gratuity exemption — Sec 10(10)</li>
+          <li>Leave encashment at retirement — Sec 10(10AA)</li>
+          <li>Commuted pension exemption — Sec 10(10A)</li>
+          <li>Employer's RPF contribution exemption (up to 12% of salary)</li>
+          <li>Standard deduction (amount differs, but both regimes allow it — see table above)</li>
+        </ul>
+        <div class="trap"><strong>⚠ Exam trap:</strong> if a question doesn't mention "new regime" anywhere, assume Old Regime — that's the only regime where an HRA/allowances/deductions numerical makes sense to ask in the first place.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head"><h2>Basic Concepts &amp; Definitions (Unit I foundation)</h2></div>
+    <div class="topic-body">
+      <div class="rule-box">
+        <div class="rb-label">Key terms — Sec. 2 definitions</div>
+        <table class="ref-table">
+          <tr><th>Term</th><th>Meaning</th></tr>
+          <tr><td>Assessee — Sec. 2(7)</td><td>A person by whom tax (or any other sum) is payable, or against whom proceedings have been taken; includes a representative assessee, a deemed assessee, and an assessee-in-default</td></tr>
+          <tr><td>Person — Sec. 2(31)</td><td>7 categories: (i) Individual (ii) HUF (iii) Company (iv) Firm/LLP (v) AOP/BOI (vi) Local Authority (vii) Artificial Juridical Person</td></tr>
+          <tr><td>Previous Year (PY) — Sec. 3</td><td>The financial year in which income is EARNED (1 April to 31 March)</td></tr>
+          <tr><td>Assessment Year (AY) — Sec. 2(9)</td><td>The financial year immediately after the PY, in which that income is ASSESSED/taxed (also 1 April to 31 March)</td></tr>
+          <tr><td>Gross Total Income (GTI) — Sec. 80B(5)</td><td>Aggregate of income under all 5 heads, before Chapter VI-A deductions</td></tr>
+          <tr><td>Total Income — Sec. 2(45)</td><td>GTI minus Chapter VI-A deductions — this is the amount slab rates are applied to</td></tr>
+        </table>
+        <p class="rb-note">Relationship: <strong>PY 2025-26 → AY 2026-27</strong> (income earned in PY 2025-26 is assessed/taxed in AY 2026-27, which is exactly what this whole dashboard is built around).</p>
+
+        <div class="rb-label">Heads of Income — Sec. 14</div>
+        <table class="ref-table">
+          <tr><th>#</th><th>Head</th><th>Covers</th></tr>
+          <tr><td>A</td><td>Salaries</td><td>Basic, allowances, perquisites, gratuity/pension from an employer</td></tr>
+          <tr><td>B</td><td>Income from House Property</td><td>Rental / notional annual value of buildings and land attached to them</td></tr>
+          <tr><td>C</td><td>Profits &amp; Gains of Business or Profession (PGBP)</td><td>Trading, manufacturing, professional income</td></tr>
+          <tr><td>D</td><td>Capital Gains</td><td>Profit on transfer of a capital asset</td></tr>
+          <tr><td>E</td><td>Income from Other Sources</td><td>Residuary head — dividends, interest, family pension, gifts, etc.</td></tr>
+        </table>
+
+        <div class="rb-label">Charge of Income Tax — Sec. 4</div>
+        <p class="rb-note">Income tax is charged for every AY on the Total Income of the PREVIOUS year, at the rates prescribed by the annual Finance Act — this is why you always compute income for the PY but express the answer as "for A.Y. ____".</p>
+
+        <div class="rb-label">Capital Receipt vs Revenue Receipt — the four tests</div>
+        <table class="ref-table">
+          <tr><th>Test</th><th>Rule</th></tr>
+          <tr><td>Net receipt vis-à-vis Gross receipt</td><td>Income means NET receipts, not gross — expenditure incurred to earn it is deductible per the Act</td></tr>
+          <tr><td>Due basis vis-à-vis Receipt basis</td><td>Income is taxable on accrual (due) basis for PGBP/Other Sources under mercantile system, or on receipt basis under cash system — some receipts (e.g. interest on enhanced compensation) are taxable only on receipt basis</td></tr>
+          <tr><td>Application vis-à-vis Diversion of Income</td><td>"Application" = income first reaches the assessee, then he applies/spends it → fully taxable in his hands. "Diversion" = income is diverted by an overriding title BEFORE it reaches the assessee → not taxable in his hands</td></tr>
+          <tr><td>Capital vs Revenue nature</td><td>Capital receipts (sale of a fixed asset, capital investment) are NOT taxable as income unless specifically brought under the Act (e.g. capital gains); revenue receipts (sales, salary, rent, interest) ARE taxable</td></tr>
+        </table>
+
+        <div class="rb-label">Agricultural Income — Sec. 10(1) &amp; partial integration (Rule 7)</div>
+        <p class="rb-note">Agricultural income itself is fully exempt from tax. But if BOTH conditions below are met, it is still added back temporarily just to push the assessee into a higher tax bracket ("partial integration") — this only applies to individuals/HUF/AOP/BOI under the <strong>old regime</strong>:</p>
+        <ul>
+          <li>Net agricultural income exceeds ₹5,000, AND</li>
+          <li>Non-agricultural Total Income exceeds the basic exemption limit</li>
+        </ul>
+        <div class="calc">Step 1: Tax on (Non-agri income + Agri income) at slab rates
+Step 2: Tax on (Basic exemption limit + Agri income) at slab rates
+Step 3: Tax payable = Step 1 − Step 2</div>
+
+        <div class="rb-label">Casual Income — Sec. 2(24)(ix)</div>
+        <p class="rb-note">Winnings from lotteries, crossword puzzles, races (including horse races), card games, gambling/betting, game shows. Taxed flatly at <strong>30% (+cess)</strong> under "Income from Other Sources" — no basic exemption, no Chapter VI-A deduction, and no expense is allowed against it.</p>
+
+        <div class="rb-label">Method of Accounting — Sec. 145</div>
+        <p class="rb-note"><strong>Cash system:</strong> income taxed when actually received. <strong>Mercantile (accrual) system:</strong> income taxed when it accrues/becomes due, whether received or not. Salary is always taxed on "due or received, whichever is earlier" basis, regardless of the employer's accounting method.</p>
+
+        <div class="trap"><strong>⚠ Exam trap:</strong> examiners love a one-line question like "Define Assessment Year" or "What is Gross Total Income vis-à-vis Total Income" tucked inside a bigger practical question — know these definitions cold even though the main marks are for the numerical.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head"><h2>Slab Rates — A.Y. 2026-27 (P.Y. 2025-26)</h2></div>
+    <div class="topic-body">
+      <div class="rule-box">
+        <div class="rb-label">Old Regime — individual below 60 years</div>
+        <table class="ref-table">
+          <tr><th>Total Income slab</th><th>Rate</th></tr>
+          <tr><td>Up to ₹2,50,000</td><td>Nil</td></tr>
+          <tr><td>₹2,50,001 – ₹5,00,000</td><td>5%</td></tr>
+          <tr><td>₹5,00,001 – ₹10,00,000</td><td>20%</td></tr>
+          <tr><td>Above ₹10,00,000</td><td>30%</td></tr>
+        </table>
+        <p class="rb-note">Senior citizen (60–80 yrs): basic exemption raised to ₹3,00,000. Super senior citizen (80+ yrs): basic exemption raised to ₹5,00,000. Rest of the slabs are the same.</p>
+
+        <div class="rb-label">New Regime (default regime) — all individuals, same slabs regardless of age</div>
+        <table class="ref-table">
+          <tr><th>Total Income slab</th><th>Rate</th></tr>
+          <tr><td>Up to ₹4,00,000</td><td>Nil</td></tr>
+          <tr><td>₹4,00,001 – ₹8,00,000</td><td>5%</td></tr>
+          <tr><td>₹8,00,001 – ₹12,00,000</td><td>10%</td></tr>
+          <tr><td>₹12,00,001 – ₹16,00,000</td><td>15%</td></tr>
+          <tr><td>₹16,00,001 – ₹20,00,000</td><td>20%</td></tr>
+          <tr><td>₹20,00,001 – ₹24,00,000</td><td>25%</td></tr>
+          <tr><td>Above ₹24,00,000</td><td>30%</td></tr>
+        </table>
+
+        <div class="rb-label">Rebate under Sec. 87A (makes tax fully Nil up to a point)</div>
+        <table class="ref-table">
+          <tr><th>Regime</th><th>Rebate available if Total Income ≤</th><th>Max rebate</th></tr>
+          <tr><td>Old Regime</td><td>₹5,00,000</td><td>₹12,500</td></tr>
+          <tr><td>New Regime</td><td>₹12,00,000</td><td>₹60,000</td></tr>
+        </table>
+        <p class="rb-note">Cess: add Health &amp; Education Cess @ 4% on (tax − rebate) in both regimes to arrive at the final tax payable — most 5/10/15-mark sums in this course stop at "Income from Salary" or "Total Income" and don't go this far, but know it for a full tax-liability question.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head"><h2>Other numbers to know before you start</h2></div>
+    <div class="topic-body">
+      <div class="rule-box">
+        <div class="rb-label">Quick checklist — have these memorised</div>
+        <table class="ref-table">
+          <tr><th>Item</th><th>Figure</th></tr>
+          <tr><td>Gratuity exemption ceiling (lifetime)</td><td>₹20,00,000</td></tr>
+          <tr><td>Leave encashment exemption ceiling (retirement, non-govt.)</td><td>₹25,00,000</td></tr>
+          <tr><td>Family pension deduction — old regime</td><td>Least of ⅓ or ₹15,000</td></tr>
+          <tr><td>Family pension deduction — new regime</td><td>Least of ⅓ or ₹25,000</td></tr>
+          <tr><td>80C ceiling</td><td>₹1,50,000 (old regime only)</td></tr>
+          <tr><td>80D — self &amp; family (non-senior)</td><td>₹25,000 (old regime only)</td></tr>
+          <tr><td>80D — senior citizen</td><td>₹50,000 (old regime only)</td></tr>
+          <tr><td>Employer RPF contribution exempt up to</td><td>12% of salary (Basic+DA)</td></tr>
+          <tr><td>Basic condition (a) — residential status</td><td>182 days</td></tr>
+          <tr><td>Basic condition (b) — residential status</td><td>60 days + 365 days (4 yrs)</td></tr>
+          <tr><td>Additional condition — ROR</td><td>Resident 2/10 yrs AND 730 days/7 yrs</td></tr>
+          <tr><td>Metro cities for HRA (50% rule)</td><td>Delhi, Mumbai, Kolkata, Chennai</td></tr>
+        </table>
+        <p class="rb-note">With this reference in hand, work through the 5-mark, 10-mark and 15-mark tabs in order — each one builds on the rules above.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5 MARKERS ================= -->
+<section class="panel" id="m5">
+  <div class="panel-intro">Four sub-topics. Each has: a rule box (with every exception the examiner can twist), one fully worked sum, then 2–3 practice sums covering the different exception scenarios — with hidden solutions to self-test.</div>
+  <div class="jumplist"><strong>Jump to:</strong>
+    <a href="#rs">1. Residential Status</a>
+    <a href="#gr">2. Gratuity</a>
+    <a href="#pe">3. Pension</a>
+    <a href="#ti">4. Total Income</a>
+  </div>
+
+  <!-- Residential Status -->
+  <div class="topic" id="rs">
+    <div class="topic-head"><h2>1 · Residential Status (Sec. 6)</h2><span class="head-right"><span class="chapter-tag">Chapter 1 · Unit I</span><span class="marks">5 marks</span></span></div>
+    <div class="topic-body">
+      <div class="rule-box">
+        <div class="rb-label">Basic conditions — need at least ONE</div>
+        <ul>
+          <li>(a) In India <strong>182 days or more</strong> in the PY, OR</li>
+          <li>(b) In India <strong>60 days or more</strong> in the PY <em>and</em> <strong>365 days or more</strong> in the 4 years immediately before the PY</li>
+        </ul>
+
+        <div class="rb-label">Exceptions — when the "60 days" in (b) is relaxed</div>
+        <table class="ref-table">
+          <tr><th>Who</th><th>60 days replaced by</th></tr>
+          <tr><td>Indian citizen leaving India for employment abroad, or as a crew member of an Indian ship</td><td>182 days</td></tr>
+          <tr><td>Indian citizen / Person of Indian Origin (PIO) on a visit to India — Indian income ≤ ₹15 lakh</td><td>182 days</td></tr>
+          <tr><td>Indian citizen / PIO on a visit to India — Indian income &gt; ₹15 lakh</td><td>120 days</td></tr>
+        </table>
+
+        <div class="rb-label">Deemed Resident — Sec. 6(1A)</div>
+        <p class="rb-note">An Indian citizen whose India-sourced income exceeds ₹15 lakh AND who is not liable to tax in any other country by reason of domicile/residence is a "deemed resident" — even with 0 days in India. He is always classified <strong>RNOR</strong>.</p>
+
+        <div class="rb-label">Conclusion</div>
+        <ul>
+          <li>No basic condition satisfied → <strong>Non-Resident (NR)</strong></li>
+          <li>At least one basic condition satisfied → Resident; then test the additional conditions below</li>
+        </ul>
+
+        <div class="rb-label">Additional conditions — need BOTH for ROR</div>
+        <ul>
+          <li>Resident in India in 2 of the preceding 10 years, AND</li>
+          <li>In India for 730 days or more in the preceding 7 years</li>
+        </ul>
+        <p class="rb-note">Both satisfied → <strong>ROR</strong>. Either one fails → <strong>RNOR</strong>.</p>
+
+        <div class="trap"><strong>⚠ Exam trap:</strong> a citizen/PIO who becomes "Resident" ONLY through the 120-day exception is automatically <strong>RNOR</strong> — the additional conditions are not even tested for him.</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-head">Worked Sum — basic exception (employment abroad)</div>
+        <div class="q-text"><strong>Q.</strong> Mr. Arjun, an Indian citizen, left India for the first time on 15th September 2025 to take up employment in Dubai. Determine his residential status for A.Y. 2026-27.</div>
+        <div class="steps">
+          <div class="step"><span class="label">Step 1 — Count days in India in PY 2025-26</span><div class="calc">1 Apr–15 Sept 2025: Apr(30)+May(31)+Jun(30)+Jul(31)+Aug(31)+Sep(15) = 168 days</div></div>
+          <div class="step"><span class="label">Step 2 — Condition (a)</span><div class="calc">168 days &lt; 182 days → NOT satisfied</div></div>
+          <div class="step"><span class="label">Step 3 — Condition (b) with exception</span><div class="calc">He is an Indian citizen leaving India for employment abroad → the 60-day limb is replaced by 182 days → he is nowhere near 182 days present anyway, so this condition also fails</div></div>
+          <div class="step"><span class="label">Step 4 — Conclusion</span><div class="calc">No basic condition satisfied → Non-Resident (NR) for A.Y. 2026-27</div></div>
+        </div>
+        <div class="answer-final">Answer: Mr. Arjun is a Non-Resident (NR) for A.Y. 2026-27.</div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 1 — plain basic conditions <span class="exc-tag">standard case</span></div>
+        <div class="q-text"><strong>Q.</strong> Ms. Kavya, a foreign national, came to India for the first time on 10th June 2021. During PY 2021-22 to 2025-26 she stayed in India for 100, 190, 40, 200 and 95 days respectively. Determine her residential status for A.Y. 2026-27.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Current PY 2025-26</span><div class="calc">95 days in India → condition (a): 95 &lt; 182, not satisfied</div></div>
+            <div class="step"><span class="label">Step 2 — Preceding 4 years (2021-22 to 2024-25)</span><div class="calc">100+190+40+200 = 530 days ≥ 365 days → condition (b) satisfied (she is not covered by any exception, so plain 60-day rule applies and 95≥60 too)</div></div>
+            <div class="step"><span class="label">Step 3 — She is Resident. Check additional conditions</span>
+              <div class="calc">Resident in 2 of preceding 10 years? Yes (2022-23 &amp; 2023-24 onward were resident years) → satisfied.
+Days in preceding 7 years (2018-19 to 2024-25): only 2021-22 to 2024-25 apply = 100+190+40+200 = 530 days &lt; 730 days → NOT satisfied</div></div>
+            <div class="step"><span class="label">Step 4 — Conclusion</span><div class="calc">One additional condition fails → Resident but Not Ordinarily Resident (RNOR)</div></div>
+          </div>
+          <div class="answer-final">Answer: RNOR for A.Y. 2026-27.</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 2 — PIO visit, income &gt; ₹15 lakh <span class="exc-tag">120-day exception</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Rahul, an Indian citizen settled in Singapore, comes on a visit to India during PY 2025-26 and stays for 130 days. His India-sourced income (excluding foreign income) is ₹18,00,000. He was in India for 400 days during the 4 years preceding PY 2025-26. Determine his residential status for A.Y. 2026-27.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Condition (a)</span><div class="calc">130 days &lt; 182 days → NOT satisfied</div></div>
+            <div class="step"><span class="label">Step 2 — Condition (b), which limb applies?</span><div class="calc">He is a citizen visiting India with Indian income &gt; ₹15 lakh → 60-day limb replaced by 120 days</div></div>
+            <div class="step"><span class="label">Step 3 — Apply the 120-day test</span><div class="calc">130 days ≥ 120 days ✓ AND 400 days ≥ 365 days (preceding 4 years) ✓ → condition (b) satisfied</div></div>
+            <div class="step"><span class="label">Step 4 — Resident; but which category?</span><div class="calc">Since he became Resident ONLY via the 120-day exception, he is automatically classified RNOR — additional conditions are not tested (exam trap rule above)</div></div>
+          </div>
+          <div class="answer-final">Answer: Resident but Not Ordinarily Resident (RNOR) for A.Y. 2026-27.</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 3 — Deemed Resident <span class="exc-tag">Sec. 6(1A)</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Anand, an Indian citizen, has India-sourced income of ₹20,00,000 for PY 2025-26. He is not liable to pay tax in any other country by reason of domicile or residence. He visited India only for 25 days during the year and was outside India for the whole of the preceding 4 years. Determine his residential status for A.Y. 2026-27.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Test ordinary basic conditions</span><div class="calc">25 days &lt; 182 → (a) fails. 0 days in preceding 4 years → (b) fails.<br>Not resident under the normal Sec. 6(1) test.</div></div>
+            <div class="step"><span class="label">Step 2 — Check Sec. 6(1A) deeming fiction</span><div class="calc">He is an Indian citizen, India income (₹20,00,000) &gt; ₹15 lakh, and not liable to tax anywhere else → conditions for deemed residency are met</div></div>
+            <div class="step"><span class="label">Step 3 — Conclusion</span><div class="calc">He is a "Deemed Resident" u/s 6(1A) — and by law is always classified RNOR</div></div>
+          </div>
+          <div class="answer-final">Answer: Deemed Resident, treated as RNOR for A.Y. 2026-27.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gratuity -->
+  <div class="topic" id="gr">
+    <div class="topic-head"><h2>2 · Gratuity — Sec. 10(10)</h2><span class="head-right"><span class="chapter-tag">Chapter 2 · Unit II</span><span class="marks">5 marks</span></span></div>
+    <div class="topic-body">
+      <div class="rule-box">
+        <div class="rb-label">Three categories of employee</div>
+        <table class="ref-table">
+          <tr><th>Category</th><th>Exemption</th></tr>
+          <tr><td>Govt. employee (Central/State/Local authority)</td><td>Fully exempt — no ceiling</td></tr>
+          <tr><td>Non-govt., covered under Payment of Gratuity Act 1972</td><td>Least of: (i) actual gratuity (ii) 15/26 × last drawn salary (Basic+DA) × completed years of service (round UP part-year &gt; 6 months) (iii) ₹20,00,000</td></tr>
+          <tr><td>Non-govt., NOT covered under the Act</td><td>Least of: (i) actual gratuity (ii) ½ × average salary of last 10 months × completed years of service (fraction of a year ignored) (iii) ₹20,00,000</td></tr>
+        </table>
+
+        <div class="rb-label">Exception — more than one employer / lifetime ceiling</div>
+        <p class="rb-note">The ₹20,00,000 ceiling is a <strong>lifetime aggregate</strong> across all employers, not per job. If exemption was already claimed against an earlier gratuity, the remaining ceiling for this employer = ₹20,00,000 − amount already exempted.</p>
+
+        <div class="trap"><strong>⚠ Exam trap:</strong> "Salary" for the 15/26 formula = Basic + DA (only if DA is under terms of employment) — never include bonus, commission (unless it's a fixed % of turnover for non-Act cases), or perquisites.</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-head">Worked Sum — covered under the Act</div>
+        <div class="q-text"><strong>Q.</strong> Mr. Rakesh retires from a private company covered under the Payment of Gratuity Act after 24 years 7 months of service. Last drawn salary (Basic + DA) = ₹40,000 p.m. Gratuity received = ₹9,50,000. Compute taxable gratuity.</div>
+        <div class="steps">
+          <div class="step"><span class="label">Step 1 — Completed years</span><div class="calc">24 years 7 months → part year &gt; 6 months → rounded up to 25 years</div></div>
+          <div class="step"><span class="label">Step 2 — Apply formula (ii)</span><div class="calc">15/26 × 40,000 × 25 = ₹5,76,923</div></div>
+          <div class="step"><span class="label">Step 3 — Compare all three limits</span>
+            <table class="calc-table">
+              <tr><th>Limit</th><th class="num">Amount (₹)</th></tr>
+              <tr><td>(i) Actual gratuity received</td><td class="num">9,50,000</td></tr>
+              <tr><td>(ii) 15/26 × salary × years</td><td class="num">5,76,923</td></tr>
+              <tr><td>(iii) Statutory ceiling</td><td class="num">20,00,000</td></tr>
+              <tr class="total"><td>Exempt = least of the three</td><td class="num">5,76,923</td></tr>
+            </table>
+          </div>
+          <div class="step"><span class="label">Step 4 — Taxable gratuity</span><div class="calc">9,50,000 − 5,76,923 = ₹3,73,077</div></div>
+        </div>
+        <div class="answer-final">Answer: Taxable gratuity = ₹3,73,077 (exempt ₹5,76,923)</div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 1 — NOT covered under the Act <span class="exc-tag">10-month average</span></div>
+        <div class="q-text"><strong>Q.</strong> Mrs. Leela, a non-government employee not covered under the Payment of Gratuity Act, retires after 22 years of service. Average salary of last 10 months = ₹36,000 p.m. Gratuity received = ₹5,00,000. Compute taxable gratuity.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1</span><div class="calc">½ × 36,000 × 22 = ₹3,96,000</div></div>
+            <div class="step"><span class="label">Step 2 — Least of three</span>
+              <table class="calc-table">
+                <tr><th>Limit</th><th class="num">Amount (₹)</th></tr>
+                <tr><td>Actual received</td><td class="num">5,00,000</td></tr>
+                <tr><td>½ × avg. salary × years</td><td class="num">3,96,000</td></tr>
+                <tr><td>Statutory ceiling</td><td class="num">20,00,000</td></tr>
+                <tr class="total"><td>Exempt</td><td class="num">3,96,000</td></tr>
+              </table>
+            </div>
+            <div class="step"><span class="label">Step 3 — Taxable</span><div class="calc">5,00,000 − 3,96,000 = ₹1,04,000</div></div>
+          </div>
+          <div class="answer-final">Answer: Taxable gratuity = ₹1,04,000</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 2 — Government employee <span class="exc-tag">fully exempt</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Ramesh, a Central Government employee, retires after 30 years of service and receives gratuity of ₹12,00,000. Compute taxable gratuity.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Identify category</span><div class="calc">Central Government employee → fully exempt, no ceiling and no formula needed</div></div>
+          </div>
+          <div class="answer-final">Answer: Entire ₹12,00,000 is exempt. Taxable gratuity = ₹0</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 3 — second employer, lifetime ceiling <span class="exc-tag">aggregate ₹20L rule</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Kunal received gratuity of ₹15,00,000 from his first employer in 2018 and claimed full exemption at that time. He now receives ₹10,00,000 gratuity from his second (current) employer, covered under the Payment of Gratuity Act, after 18 years of service; last drawn salary (Basic+DA) = ₹45,000. Compute taxable gratuity now.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Remaining lifetime ceiling</span><div class="calc">₹20,00,000 − ₹15,00,000 (already exempted) = ₹5,00,000</div></div>
+            <div class="step"><span class="label">Step 2 — Formula (ii)</span><div class="calc">15/26 × 45,000 × 18 = ₹4,67,308</div></div>
+            <div class="step"><span class="label">Step 3 — Least of three</span>
+              <table class="calc-table">
+                <tr><th>Limit</th><th class="num">Amount (₹)</th></tr>
+                <tr><td>Actual received</td><td class="num">10,00,000</td></tr>
+                <tr><td>15/26 × salary × years</td><td class="num">4,67,308</td></tr>
+                <tr><td>Remaining lifetime ceiling</td><td class="num">5,00,000</td></tr>
+                <tr class="total"><td>Exempt</td><td class="num">4,67,308</td></tr>
+              </table>
+            </div>
+            <div class="step"><span class="label">Step 4 — Taxable</span><div class="calc">10,00,000 − 4,67,308 = ₹5,32,692</div></div>
+          </div>
+          <div class="answer-final">Answer: Taxable gratuity = ₹5,32,692</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pension -->
+  <div class="topic" id="pe">
+    <div class="topic-head"><h2>3 · Pension &amp; Commuted Pension — Sec. 10(10A)</h2><span class="head-right"><span class="chapter-tag">Chapter 2 · Unit II</span><span class="marks">5 marks</span></span></div>
+    <div class="topic-body">
+      <div class="rule-box">
+        <div class="rb-label">Uncommuted pension</div>
+        <p class="rb-note">Always <strong>fully taxable</strong> under "Income from Salary" for everyone (govt. or non-govt., commuted a part or not).</p>
+
+        <div class="rb-label">Commuted pension</div>
+        <table class="ref-table">
+          <tr><th>Employee type</th><th>Exemption</th></tr>
+          <tr><td>Government employee</td><td>Fully exempt</td></tr>
+          <tr><td>Non-govt., also receives gratuity</td><td>⅓ × full (100%) value of commuted pension</td></tr>
+          <tr><td>Non-govt., does NOT receive gratuity</td><td>½ × full (100%) value of commuted pension</td></tr>
+        </table>
+        <p class="rb-note">Full value = (commuted amount received ÷ % commuted) × 100.</p>
+
+        <div class="rb-label">Exception — Family pension <span class="exc-tag">different head entirely</span></div>
+        <p class="rb-note">Pension received by <strong>legal heirs after the employee's death</strong> is "Family Pension" — taxed under <strong>Income from Other Sources</strong>, NOT Salary (no employer-employee relationship with the recipient). Deduction u/s 57(iia) = least of ⅓ of family pension or a fixed ceiling.</p>
+        <table class="ref-table">
+          <tr><th>Regime</th><th>Ceiling</th></tr>
+          <tr><td>Old regime</td><td>₹15,000</td></tr>
+          <tr><td>New regime (FY 2024-25 onward)</td><td>₹25,000</td></tr>
+        </table>
+
+        <div class="trap"><strong>⚠ Exam trap:</strong> commuted pension of a govt. employee is fully exempt regardless of gratuity; only for non-govt. employees does "did he also get gratuity?" decide ⅓ vs ½.</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-head">Worked Sum — non-govt., with gratuity</div>
+        <div class="q-text"><strong>Q.</strong> Mr. Suresh, a non-government employee, also received gratuity on retirement. He was entitled to a monthly pension of ₹8,000. On 1st October he commuted 40% of his pension and received ₹2,40,000. Compute the amount of pension taxable for the previous year (Apr–Mar), assuming uncommuted pension continued for the rest of the year at the reduced rate.</div>
+        <div class="steps">
+          <div class="step"><span class="label">Step 1 — Uncommuted pension, Apr–Sep (6 months, full rate)</span><div class="calc">6 × 8,000 = ₹48,000 (fully taxable)</div></div>
+          <div class="step"><span class="label">Step 2 — Uncommuted pension, Oct–Mar (6 months, reduced 60%)</span><div class="calc">60% of 8,000 = 4,800; 6 × 4,800 = ₹28,800 (fully taxable)</div></div>
+          <div class="step"><span class="label">Step 3 — Full value of commuted pension</span><div class="calc">2,40,000 ÷ 40 × 100 = ₹6,00,000</div></div>
+          <div class="step"><span class="label">Step 4 — Exemption (gratuity also received → ⅓ rule)</span><div class="calc">⅓ × 6,00,000 = ₹2,00,000 exempt</div></div>
+          <div class="step"><span class="label">Step 5 — Taxable commuted pension</span><div class="calc">2,40,000 − 2,00,000 = ₹40,000</div></div>
+          <div class="step"><span class="label">Step 6 — Total taxable pension</span><div class="calc">48,000 + 28,800 + 40,000 = ₹1,16,800</div></div>
+        </div>
+        <div class="answer-final">Answer: Total taxable pension for the year = ₹1,16,800</div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 1 — non-govt., no gratuity <span class="exc-tag">½ rule</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Iyer, a non-government employee, did NOT receive any gratuity. He commuted 50% of his pension and received ₹3,00,000. Compute the exempt and taxable amount of the commuted pension.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Full value</span><div class="calc">3,00,000 ÷ 50 × 100 = ₹6,00,000</div></div>
+            <div class="step"><span class="label">Step 2 — No gratuity → ½ rule</span><div class="calc">½ × 6,00,000 = ₹3,00,000 exempt</div></div>
+            <div class="step"><span class="label">Step 3 — Taxable</span><div class="calc">3,00,000 − 3,00,000 = ₹0</div></div>
+          </div>
+          <div class="answer-final">Answer: Fully exempt — taxable commuted pension = ₹0</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 2 — Government employee <span class="exc-tag">fully exempt</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Ashok, a State Government employee, commutes 50% of his pension and receives ₹4,00,000. Compute taxable commuted pension.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1</span><div class="calc">Government employee → fully exempt, no formula needed</div></div>
+          </div>
+          <div class="answer-final">Answer: Taxable commuted pension = ₹0</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 3 — Family pension <span class="exc-tag">Income from Other Sources</span></div>
+        <div class="q-text"><strong>Q.</strong> Mrs. Sunita receives family pension of ₹18,000 per month after the death of her husband (a non-government employee) during PY 2025-26. Compute the taxable amount and state under which head it is taxed (use the old-regime ceiling).</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Identify the head</span><div class="calc">Received by a legal heir after death → "Family Pension" → taxed under Income from Other Sources</div></div>
+            <div class="step"><span class="label">Step 2 — Annual receipt</span><div class="calc">18,000 × 12 = ₹2,16,000</div></div>
+            <div class="step"><span class="label">Step 3 — Deduction u/s 57(iia)</span><div class="calc">Least of ⅓ × 2,16,000 = 72,000, OR ₹15,000 (old-regime ceiling) → deduction = ₹15,000</div></div>
+            <div class="step"><span class="label">Step 4 — Taxable</span><div class="calc">2,16,000 − 15,000 = ₹2,01,000</div></div>
+          </div>
+          <div class="answer-final">Answer: Taxable family pension = ₹2,01,000, under "Income from Other Sources."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Total Income -->
+  <div class="topic" id="ti">
+    <div class="topic-head"><h2>4 · Calculation of Taxable / Total Income</h2><span class="head-right"><span class="chapter-tag">Chapter 1 · Unit I</span><span class="marks">5 marks</span></span></div>
+    <div class="topic-body">
+      <div class="rule-box">
+        <div class="rb-label">Formula</div>
+        <p class="rb-note"><strong>Gross Total Income (GTI)</strong> = Salary + House Property + Business/Profession + Capital Gains + Other Sources (after inter-head set-off of losses).<br>
+        <strong>Total Income</strong> = GTI − Deductions under Chapter VI-A (Sec. 80C to 80U), rounded off to the nearest ₹10.</p>
+
+        <div class="rb-label">Common Chapter VI-A deductions to remember</div>
+        <table class="ref-table">
+          <tr><th>Section</th><th>For</th><th>Max limit</th></tr>
+          <tr><td>80C</td><td>LIC, PF, ELSS, tuition fees, etc.</td><td>₹1,50,000</td></tr>
+          <tr><td>80D</td><td>Medical insurance (self &amp; family, non-senior)</td><td>₹25,000</td></tr>
+          <tr><td>80D</td><td>Medical insurance (senior citizen)</td><td>₹50,000</td></tr>
+          <tr><td>80TTA</td><td>Savings account interest (non-senior)</td><td>₹10,000</td></tr>
+          <tr><td>80TTB</td><td>Interest income (senior citizen — any deposit)</td><td>₹50,000</td></tr>
+        </table>
+
+        <div class="trap"><strong>⚠ Exam trap:</strong> total Chapter VI-A deduction can never exceed the GTI — it cannot create or increase a loss. If GTI is less than eligible deduction, Total Income is restricted to ₹0, not a negative figure.</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-head">Worked Sum</div>
+        <div class="q-text"><strong>Q.</strong> From the following particulars of Mr. Nikhil for A.Y. 2026-27, compute his Total Income: Income from Salary ₹6,40,000; Income from House Property ₹1,20,000; Income from Other Sources ₹35,000; Deduction u/s 80C (LIC + PF) ₹1,10,000 (max allowed ₹1,50,000); Deduction u/s 80D (medical insurance) ₹18,000.</div>
+        <div class="steps">
+          <div class="step"><span class="label">Step 1 — Add up all heads to get GTI</span>
+            <table class="calc-table">
+              <tr><th>Head of Income</th><th class="num">₹</th></tr>
+              <tr><td>Income from Salary</td><td class="num">6,40,000</td></tr>
+              <tr><td>Income from House Property</td><td class="num">1,20,000</td></tr>
+              <tr><td>Income from Other Sources</td><td class="num">35,000</td></tr>
+              <tr class="total"><td>Gross Total Income</td><td class="num">7,95,000</td></tr>
+            </table>
+          </div>
+          <div class="step"><span class="label">Step 2 — Deduct Chapter VI-A deductions</span><div class="calc">80C: ₹1,10,000 (within ₹1,50,000 cap, allowed in full)
+80D: ₹18,000
+Total deductions = 1,10,000 + 18,000 = ₹1,28,000</div></div>
+          <div class="step"><span class="label">Step 3 — Total Income</span><div class="calc">7,95,000 − 1,28,000 = ₹6,67,000</div></div>
+        </div>
+        <div class="answer-final">Answer: Total Income = ₹6,67,000</div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 1 — house property loss set-off <span class="exc-tag">inter-head set-off</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Deepak has: Income from Salary ₹4,80,000; Income from House Property (loss) −₹40,000; Income from Other Sources ₹60,000; Deduction u/s 80C ₹1,50,000. Compute Total Income.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — GTI (set off house property loss against other heads)</span><div class="calc">4,80,000 − 40,000 + 60,000 = ₹5,00,000</div></div>
+            <div class="step"><span class="label">Step 2 — Less: 80C</span><div class="calc">5,00,000 − 1,50,000 = ₹3,50,000</div></div>
+          </div>
+          <div class="answer-final">Answer: Total Income = ₹3,50,000</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 2 — 80TTA + 80D together <span class="exc-tag">multiple deductions</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Verma has: Income from Salary ₹5,25,000; Interest from Savings Bank A/c ₹12,000; Income from House Property ₹80,000; Deduction u/s 80C ₹95,000; u/s 80D (self, non-senior) ₹22,000 (max ₹25,000); u/s 80TTA (savings interest, max ₹10,000). Compute Total Income.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — GTI</span><div class="calc">5,25,000 + 12,000 + 80,000 = ₹6,17,000</div></div>
+            <div class="step"><span class="label">Step 2 — Deductions</span><div class="calc">80C = 95,000 (within cap)
+80D = min(22,000, 25,000) = 22,000
+80TTA = min(12,000, 10,000) = 10,000
+Total = 95,000 + 22,000 + 10,000 = ₹1,27,000</div></div>
+            <div class="step"><span class="label">Step 3 — Total Income</span><div class="calc">6,17,000 − 1,27,000 = ₹4,90,000</div></div>
+          </div>
+          <div class="answer-final">Answer: Total Income = ₹4,90,000</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 3 — deduction restricted to GTI <span class="exc-tag">floor at ₹0</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Iqbal (a part-time worker) has Gross Total Income of only ₹1,20,000, and he actually invested ₹1,50,000 eligible for deduction u/s 80C. Compute his Total Income.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Deduction cannot exceed GTI</span><div class="calc">Eligible investment ₹1,50,000, but GTI itself is only ₹1,20,000 → deduction restricted to ₹1,20,000</div></div>
+            <div class="step"><span class="label">Step 2 — Total Income</span><div class="calc">1,20,000 − 1,20,000 = ₹0</div></div>
+          </div>
+          <div class="answer-final">Answer: Total Income = ₹0 (never negative)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10 MARKERS ================= -->
+<section class="panel" id="m10">
+  <div class="panel-intro">Two sub-topics, 10 marks each — usually a rule-application table plus a slightly longer computation across several income items.</div>
+  <div class="jumplist"><strong>Jump to:</strong>
+    <a href="#it">1. Incidence of Tax</a>
+    <a href="#al">2. Allowances</a>
+  </div>
+
+  <!-- Incidence of tax -->
+  <div class="topic" id="it">
+    <div class="topic-head"><h2>1 · Incidence of Tax / Scope of Total Income (Sec. 5)</h2><span class="head-right"><span class="chapter-tag">Chapter 1 · Unit I</span><span class="marks">10 marks</span></span></div>
+    <div class="topic-body">
+      <div class="rule-box">
+        <div class="rb-label">Taxability by residential status</div>
+        <table class="ref-table">
+          <tr><th>Type of Income</th><th>ROR</th><th>RNOR</th><th>NR</th></tr>
+          <tr><td>Received / deemed received in India</td><td>Taxable</td><td>Taxable</td><td>Taxable</td></tr>
+          <tr><td>Accrues / arises (or deemed) in India</td><td>Taxable</td><td>Taxable</td><td>Taxable</td></tr>
+          <tr><td>Accrues outside India, from a business <strong>controlled from India</strong></td><td>Taxable</td><td>Taxable</td><td>Not taxable</td></tr>
+          <tr><td>Accrues &amp; received outside India (any other foreign income)</td><td>Taxable</td><td>Not taxable</td><td>Not taxable</td></tr>
+        </table>
+
+        <div class="rb-label">Exception — Sec. 9 "deemed to accrue in India"</div>
+        <p class="rb-note">Certain incomes are deemed to accrue/arise in India — and are taxable for <strong>every</strong> assessee including NR, regardless of where actually received: salary for services rendered in India; dividend paid by an Indian company; interest/royalty/fees for technical services payable by government or an Indian resident (with exceptions); capital gains on transfer of a capital asset situated in India.</p>
+
+        <div class="rb-label">Exception — gifts (Sec. 56(2)(x), Income from Other Sources)</div>
+        <table class="ref-table">
+          <tr><th>Gift from</th><th>Treatment</th></tr>
+          <tr><td>Relative (spouse, siblings, lineal ascendant/descendant, etc.)</td><td>Fully exempt, any amount</td></tr>
+          <tr><td>Non-relative, aggregate up to ₹50,000/year</td><td>Fully exempt</td></tr>
+          <tr><td>Non-relative, aggregate exceeds ₹50,000/year</td><td>ENTIRE amount taxable, not just the excess</td></tr>
+        </table>
+
+        <div class="trap"><strong>⚠ Exam trap:</strong> "past year's income remitted/brought into India now" is NOT income of the current year at all — it is excluded for every residential status, since it was already earned (and possibly taxed or exempt) in an earlier year.</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-head">Worked Sum</div>
+        <div class="q-text"><strong>Q.</strong> Mr. Bose furnishes the following incomes for the P.Y. 2025-26. Compute his Gross Total Income if he is (a) ROR (b) RNOR (c) NR.
+        <br>1. Salary received in India ₹5,00,000
+        <br>2. Income from business in London, controlled from Mumbai ₹1,50,000
+        <br>3. Interest on German bonds, received in Germany ₹80,000
+        <br>4. Rental income from a house in India ₹90,000
+        <br>5. Profit from a business in Canada, received there and controlled from Canada ₹1,20,000</div>
+        <div class="steps">
+          <div class="step"><span class="label">Step 1 — Classify each income item</span>
+            <table class="calc-table">
+              <tr><th>Item</th><th>Nature</th></tr>
+              <tr><td>1. Salary received in India</td><td>Received in India → taxable for all</td></tr>
+              <tr><td>2. Business in London, controlled from India</td><td>Foreign business controlled from India → taxable for ROR &amp; RNOR only</td></tr>
+              <tr><td>3. Interest on German bonds, received abroad</td><td>Accrued &amp; received outside India → taxable for ROR only</td></tr>
+              <tr><td>4. Rent from Indian house</td><td>Accrues in India → taxable for all</td></tr>
+              <tr><td>5. Canada business, controlled from Canada</td><td>Foreign income, foreign control → taxable for ROR only</td></tr>
+            </table>
+          </div>
+          <div class="step"><span class="label">Step 2 — Compute GTI for each status</span>
+            <table class="calc-table">
+              <tr><th>Status</th><th>Items included</th><th class="num">GTI (₹)</th></tr>
+              <tr><td>(a) ROR</td><td>All 5 items</td><td class="num">9,40,000</td></tr>
+              <tr><td>(b) RNOR</td><td>Items 1, 2, 4 only</td><td class="num">7,40,000</td></tr>
+              <tr><td>(c) NR</td><td>Items 1, 4 only</td><td class="num">5,90,000</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="answer-final">Answer: GTI = ₹9,40,000 (ROR) · ₹7,40,000 (RNOR) · ₹5,90,000 (NR)</div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 1 — includes non-taxable "past income remitted" <span class="exc-tag">exclusion trap</span></div>
+        <div class="q-text"><strong>Q.</strong> Mrs. Fatima has: (i) Dividend from an Indian company, received in India ₹40,000 (ii) Profit from business in Kenya, controlled from Kenya, received in Kenya ₹2,00,000 (iii) Past untaxed foreign income of A.Y. 2019-20 brought into India this year ₹60,000 (iv) Income from agriculture in Nepal, received there ₹50,000. Compute her GTI if she is (a) ROR (b) RNOR (c) NR.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Classification</span>
+              <table class="calc-table">
+                <tr><th>Item</th><th>Nature</th></tr>
+                <tr><td>(i) Dividend received in India</td><td>Taxable for all</td></tr>
+                <tr><td>(ii) Kenya business, controlled &amp; received abroad</td><td>Taxable for ROR only</td></tr>
+                <tr><td>(iii) Past untaxed foreign income remitted now</td><td>Not income of this year at all — excluded for everyone</td></tr>
+                <tr><td>(iv) Nepal agricultural income, received abroad</td><td>Taxable for ROR only</td></tr>
+              </table>
+            </div>
+            <div class="step"><span class="label">GTI</span>
+              <table class="calc-table">
+                <tr><th>Status</th><th class="num">GTI (₹)</th></tr>
+                <tr><td>ROR</td><td class="num">40,000+2,00,000+50,000 = 2,90,000</td></tr>
+                <tr><td>RNOR</td><td class="num">40,000</td></tr>
+                <tr><td>NR</td><td class="num">40,000</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="answer-final">Answer: ₹2,90,000 (ROR) · ₹40,000 (RNOR) · ₹40,000 (NR)</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 2 — Sec. 9 deemed income, taxable even for NR <span class="exc-tag">deeming fiction</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Watson, a Non-Resident, worked in the Mumbai branch of a company for 4 months during the year and his salary of ₹4,00,000 for that period was paid directly into his London bank account. He separately earned salary of ₹3,00,000 for unrelated work done and received entirely in London. Compute his income taxable in India.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Mumbai salary</span><div class="calc">Salary for services rendered IN India is deemed to accrue/arise in India u/s 9(1)(ii) — taxable for every assessee, including NR, no matter where it is received. Taxable = ₹4,00,000</div></div>
+            <div class="step"><span class="label">Step 2 — London salary</span><div class="calc">Services rendered outside India, accrued and received outside India → not taxable for a NR</div></div>
+          </div>
+          <div class="answer-final">Answer: Income taxable in India = ₹4,00,000 only</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 3 — gifts, relative vs non-relative <span class="exc-tag">Sec. 56(2)(x)</span></div>
+        <div class="q-text"><strong>Q.</strong> Ms. Rina received a gift of ₹80,000 from her college friend (non-relative) via bank transfer received in India, and ₹1,00,000 from her father (relative) on her birthday. Compute her taxable "Income from Other Sources" on account of gifts.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Gift from father</span><div class="calc">Father is a "relative" → fully exempt, any amount → taxable = ₹0</div></div>
+            <div class="step"><span class="label">Step 2 — Gift from friend</span><div class="calc">Non-relative, ₹80,000 &gt; ₹50,000 threshold → the ENTIRE ₹80,000 becomes taxable (not just the excess of ₹30,000)</div></div>
+          </div>
+          <div class="answer-final">Answer: Taxable = ₹80,000 (gift from friend); gift from father = Nil</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Allowances -->
+  <div class="topic" id="al">
+    <div class="topic-head"><h2>2 · Allowances (HRA &amp; others)</h2><span class="head-right"><span class="chapter-tag">Chapter 2 · Unit II</span><span class="marks">10 marks</span></span></div>
+    <div class="topic-body">
+      <div class="rule-box">
+        <div class="rb-label">HRA — Sec. 10(13A) &amp; Rule 2A</div>
+        <p class="rb-note">Exempt = least of (i) actual HRA received (ii) rent paid − 10% of salary (iii) 50% of salary (metro: Delhi/Mumbai/Kolkata/Chennai) or 40% (other cities). <em>Salary</em> = Basic + DA (if it counts for retirement benefits) + commission (fixed % of turnover), for the relevant period.</p>
+
+        <div class="rb-label">Allowances with a fixed statutory exemption</div>
+        <table class="ref-table">
+          <tr><th>Allowance</th><th>Exemption</th></tr>
+          <tr><td>Children Education Allowance</td><td>₹100/month/child, max 2 children</td></tr>
+          <tr><td>Hostel Expenditure Allowance</td><td>₹300/month/child, max 2 children</td></tr>
+          <tr><td>Transport allowance — disabled employee</td><td>₹3,200/month</td></tr>
+          <tr><td>Underground Allowance (mining)</td><td>₹800/month</td></tr>
+          <tr><td>High Altitude Allowance — 9,000 to 15,000 ft</td><td>₹1,060/month</td></tr>
+          <tr><td>High Altitude Allowance — above 15,000 ft</td><td>₹1,600/month</td></tr>
+          <tr><td>Tribal Area Allowance</td><td>₹200/month</td></tr>
+          <tr><td>Border/Remote/Disturbed/Difficult Area Allowance</td><td>₹200 – ₹1,300/month (as notified for the area)</td></tr>
+          <tr><td>Compensatory Field Area Allowance</td><td>₹2,600/month</td></tr>
+          <tr><td>Compensatory Modified Field Area Allowance</td><td>₹1,000/month</td></tr>
+          <tr><td>Counter Insurgency Allowance</td><td>₹3,900/month</td></tr>
+          <tr><td>Island Duty Allowance (A&amp;N / Lakshadweep)</td><td>₹3,250/month</td></tr>
+        </table>
+
+        <div class="rb-label">Allowances exempt only to the extent spent (or fully taxable)</div>
+        <table class="ref-table">
+          <tr><th>Allowance</th><th>Treatment</th></tr>
+          <tr><td>Uniform Allowance</td><td>Exempt to the extent actually spent on uniform</td></tr>
+          <tr><td>Conveyance / Travelling / Daily / Academic / Research Allowance</td><td>Exempt to the extent actually spent for official duty; balance taxable</td></tr>
+          <tr><td>City Compensatory Allowance, Overtime Allowance, Medical Allowance, Servant Allowance, Dearness Pay</td><td>Fully taxable — no exemption at all</td></tr>
+        </table>
+
+        <div class="trap"><strong>⚠ Exam trap:</strong> for the "exempt to extent spent" category, exemption = whichever is LOWER of (allowance received) or (amount actually spent) — never assume the full allowance is exempt just because it has an official-sounding name.</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-head">Worked Sum — HRA (metro)</div>
+        <div class="q-text"><strong>Q.</strong> Mr. Vikram is employed in Mumbai. Basic salary ₹30,000 p.m., DA (forming part of retirement benefits) ₹5,000 p.m., HRA received ₹12,000 p.m. Rent actually paid ₹14,000 p.m. Compute exempt HRA and taxable HRA for the year.</div>
+        <div class="steps">
+          <div class="step"><span class="label">Step 1 — Salary for HRA purposes (annual)</span><div class="calc">(30,000+5,000) × 12 = ₹4,20,000</div></div>
+          <div class="step"><span class="label">Step 2 — Three limits</span>
+            <table class="calc-table">
+              <tr><th>Limit</th><th class="num">Amount (₹)</th></tr>
+              <tr><td>(i) Actual HRA received (12,000×12)</td><td class="num">1,44,000</td></tr>
+              <tr><td>(ii) Rent paid − 10% of salary = (14,000×12) − 42,000</td><td class="num">1,26,000</td></tr>
+              <tr><td>(iii) 50% of salary (Mumbai = metro)</td><td class="num">2,10,000</td></tr>
+              <tr class="total"><td>Exempt HRA = least of the three</td><td class="num">1,26,000</td></tr>
+            </table>
+          </div>
+          <div class="step"><span class="label">Step 3 — Taxable HRA</span><div class="calc">1,44,000 − 1,26,000 = ₹18,000</div></div>
+        </div>
+        <div class="answer-final">Answer: Exempt HRA = ₹1,26,000; Taxable HRA = ₹18,000</div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 1 — HRA + CEA + disabled transport <span class="exc-tag">non-metro, combined</span></div>
+        <div class="q-text"><strong>Q.</strong> Ms. Anita works in Pune (non-metro). Basic ₹25,000 p.m., DA (part of retirement benefit) ₹3,000 p.m., HRA received ₹9,000 p.m., rent paid ₹8,000 p.m. She also gets Children Education Allowance ₹300/month for 2 children and Transport Allowance (disabled employee) ₹3,500/month. Compute total taxable allowances for the year.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">HRA — annual salary</span><div class="calc">(25,000+3,000)×12 = ₹3,36,000</div></div>
+            <div class="step"><span class="label">HRA — three limits</span>
+              <table class="calc-table">
+                <tr><th>Limit</th><th class="num">₹</th></tr>
+                <tr><td>Actual HRA (9,000×12)</td><td class="num">1,08,000</td></tr>
+                <tr><td>Rent − 10% salary = (8,000×12) − 33,600</td><td class="num">62,400</td></tr>
+                <tr><td>40% of salary (non-metro)</td><td class="num">1,34,400</td></tr>
+                <tr class="total"><td>Exempt HRA</td><td class="num">62,400</td></tr>
+              </table>
+              <div class="calc">Taxable HRA = 1,08,000 − 62,400 = ₹45,600</div>
+            </div>
+            <div class="step"><span class="label">Children Education Allowance</span><div class="calc">Received: 300×12 = 3,600/child × 2 = ₹7,200
+Exempt: 100×12=1,200/child × 2 = ₹2,400
+Taxable = 7,200 − 2,400 = ₹4,800</div></div>
+            <div class="step"><span class="label">Transport Allowance (disabled)</span><div class="calc">Received: 3,500×12 = ₹42,000
+Exempt limit: 3,200×12 = ₹38,400
+Taxable = 42,000 − 38,400 = ₹3,600</div></div>
+            <div class="step"><span class="label">Total taxable allowances</span><div class="calc">45,600 + 4,800 + 3,600 = ₹54,000</div></div>
+          </div>
+          <div class="answer-final">Answer: Total taxable allowances = ₹54,000</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 2 — fully taxable + spend-based allowances <span class="exc-tag">no HRA involved</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Thomas receives: City Compensatory Allowance ₹2,000/month (fully taxable); Overtime Allowance ₹1,500/month (fully taxable); Conveyance Allowance for official duties ₹2,500/month (actual expenditure ₹2,200/month); Research Allowance ₹3,000/month (actual research-related expenditure ₹2,600/month). Compute total taxable allowances for the year.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">CCA &amp; Overtime — fully taxable</span><div class="calc">CCA: 2,000×12 = ₹24,000
+Overtime: 1,500×12 = ₹18,000</div></div>
+            <div class="step"><span class="label">Conveyance Allowance</span><div class="calc">Received: 2,500×12 = 30,000; Exempt (actual spend): 2,200×12 = 26,400
+Taxable = 30,000 − 26,400 = ₹3,600</div></div>
+            <div class="step"><span class="label">Research Allowance</span><div class="calc">Received: 3,000×12 = 36,000; Exempt (actual spend): 2,600×12 = 31,200
+Taxable = 36,000 − 31,200 = ₹4,800</div></div>
+            <div class="step"><span class="label">Total</span><div class="calc">24,000 + 18,000 + 3,600 + 4,800 = ₹50,400</div></div>
+          </div>
+          <div class="answer-final">Answer: Total taxable allowances = ₹50,400</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 3 — special area allowances <span class="exc-tag">Rule 2BB fixed limits</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Negi, posted at a place 12,000 ft above sea level, receives High Altitude Allowance ₹1,500/month. He also receives Border Area Allowance ₹1,200/month (notified exemption limit for his area = ₹1,300/month). Compute taxable allowances for the year (assume 12 months in each case).</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">High Altitude Allowance (9,000–15,000 ft slab → ₹1,060/month limit)</span><div class="calc">Received: 1,500×12 = 18,000; Exempt: 1,060×12 = 12,720
+Taxable = 18,000 − 12,720 = ₹5,280</div></div>
+            <div class="step"><span class="label">Border Area Allowance</span><div class="calc">Received ₹1,200/month is LESS than the notified limit of ₹1,300/month → entire amount is within the exemption → fully exempt
+Taxable = ₹0</div></div>
+            <div class="step"><span class="label">Total taxable</span><div class="calc">5,280 + 0 = ₹5,280</div></div>
+          </div>
+          <div class="answer-final">Answer: Total taxable allowances = ₹5,280</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 15 MARKERS ================= -->
+<section class="panel" id="m15">
+  <div class="panel-intro">The 15-mark question is a full "Income from Salary" statement — it stitches together allowances, perquisites, PF, gratuity/pension and the standard deduction into one computation.</div>
+  <div class="jumplist"><strong>Jump to:</strong>
+    <a href="#sal">Full Salary Computation</a>
+  </div>
+
+  <div class="topic" id="sal">
+    <div class="topic-head"><h2>Income from Salary — Full Computation</h2><span class="head-right"><span class="chapter-tag">Chapter 2 · Unit II</span><span class="marks">15 marks</span></span></div>
+    <div class="topic-body">
+      <div class="rule-box">
+        <div class="rb-label">Statement format</div>
+        <p class="rb-note">Basic Pay + DA + Bonus/Commission + taxable part of Allowances + taxable part of Perquisites + taxable part of Gratuity/Pension + employer's excess PF contribution = <strong>Gross Salary</strong>; less <strong>Standard Deduction</strong> = <strong>Income from Salary</strong>. Standard deduction is <strong>₹50,000 under the Old Regime</strong> (₹75,000 under the New Regime, but the New Regime doesn't allow HRA/allowance exemptions, so these worked sums use ₹50,000).</p>
+
+        <div class="rb-label">Perquisite — Rent-Free Accommodation (Rule 3)</div>
+        <table class="ref-table">
+          <tr><th>Case</th><th>Valuation</th></tr>
+          <tr><td>Government employee</td><td>License fee fixed by the government</td></tr>
+          <tr><td>Non-govt., employer-owned, city population &gt; 40 lakh</td><td>10% of salary</td></tr>
+          <tr><td>Non-govt., employer-owned, population 15–40 lakh</td><td>7.5% of salary</td></tr>
+          <tr><td>Non-govt., employer-owned, population &lt; 15 lakh</td><td>5% of salary</td></tr>
+          <tr><td>Employer-leased (not owned)</td><td>Lower of actual lease rent paid, or 10% of salary</td></tr>
+        </table>
+        <p class="rb-note">All figures above are net of any rent recovered from the employee. If furnished, add 10% p.a. of the cost of furniture (or actual hire charges) to the value.</p>
+
+        <div class="rb-label">Perquisite — Motor Car (Rule 3(2), both official + personal use, expenses met by employer)</div>
+        <table class="ref-table">
+          <tr><th>Engine capacity</th><th>Value/month</th><th>+ Driver</th></tr>
+          <tr><td>Up to 1.6 litre</td><td>₹1,800</td><td>+ ₹900/month</td></tr>
+          <tr><td>Above 1.6 litre</td><td>₹2,400</td><td>+ ₹900/month</td></tr>
+        </table>
+        <p class="rb-note">If used exclusively for official purposes (properly documented) → NIL perquisite. If exclusively personal → actual running/maintenance cost + 10% p.a. depreciation, less amount recovered from employee.</p>
+
+        <div class="rb-label">Other frequently-tested exceptions</div>
+        <ul>
+          <li><strong>Leave encashment during service</strong> (while still employed) → fully taxable, no exemption at all.</li>
+          <li><strong>Leave encashment at retirement</strong> (non-govt.) → exempt up to the least of: actual amount, 10 months' average salary, cash equivalent of leave balance (max 30 days per year of service), or ₹25,00,000.</li>
+          <li><strong>LTA (Leave Travel Allowance)</strong> → exempt to the extent of actual eligible travel cost by shortest route (economy air / AC-I rail), subject to conditions — balance taxable.</li>
+          <li><strong>Employer's contribution to Recognised PF</strong> → exempt up to 12% of salary (Basic+DA); excess is taxable.</li>
+        </ul>
+
+        <div class="trap"><strong>⚠ Exam trap:</strong> "Salary" for RFA/PF/gratuity purposes usually means Basic + DA (terms) + fixed commission — it excludes the value of perquisites themselves and most allowances, unless the question states otherwise.</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-head">Worked Sum 1 — HRA + PF + Gratuity</div>
+        <div class="q-text"><strong>Q.</strong> Mr. Rohan is employed with a private company in Bengaluru (metro). For P.Y. 2025-26:
+        <br>• Basic Salary ₹50,000 p.m. • DA (retirement terms) ₹10,000 p.m.
+        <br>• HRA received ₹15,000 p.m.; rent paid ₹18,000 p.m.
+        <br>• Employer's RPF contribution ₹90,000 p.a. (employee matched it)
+        <br>• Gratuity received on completing 20 years (covered under the Act) = ₹9,00,000
+        <br>Compute his Income from Salary for A.Y. 2026-27.</div>
+        <div class="steps">
+          <div class="step"><span class="label">Step 1 — Basic Salary</span><div class="calc">50,000 × 12 = ₹6,00,000</div></div>
+          <div class="step"><span class="label">Step 2 — Dearness Allowance</span><div class="calc">10,000 × 12 = ₹1,20,000</div></div>
+          <div class="step"><span class="label">Step 3 — HRA exemption</span><div class="calc">Salary for HRA = (50,000+10,000)×12 = ₹7,20,000
+(i) Actual HRA = 15,000×12 = 1,80,000
+(ii) Rent − 10% salary = (18,000×12) − 72,000 = 1,44,000
+(iii) 50% of salary (metro) = 3,60,000
+Exempt = least = ₹1,44,000
+Taxable HRA = 1,80,000 − 1,44,000 = ₹36,000</div></div>
+          <div class="step"><span class="label">Step 4 — Employer's RPF contribution</span><div class="calc">Exempt up to 12% of salary (Basic+DA) = 12% × 7,20,000 = 86,400
+Employer contributed 90,000 → excess taxable = 90,000 − 86,400 = ₹3,600</div></div>
+          <div class="step"><span class="label">Step 5 — Taxable Gratuity</span><div class="calc">Completed years = 20; last drawn salary = 50,000+10,000 = 60,000
+15/26 × 60,000 × 20 = ₹6,92,308
+Least of: actual 9,00,000 / formula 6,92,308 / ceiling 20,00,000 → exempt = ₹6,92,308
+Taxable gratuity = 9,00,000 − 6,92,308 = ₹2,07,692</div></div>
+          <div class="step"><span class="label">Step 6 — Gross Salary</span>
+            <table class="calc-table">
+              <tr><th>Component</th><th class="num">₹</th></tr>
+              <tr><td>Basic Salary</td><td class="num">6,00,000</td></tr>
+              <tr><td>Dearness Allowance</td><td class="num">1,20,000</td></tr>
+              <tr><td>Taxable HRA</td><td class="num">36,000</td></tr>
+              <tr><td>Excess employer RPF contribution</td><td class="num">3,600</td></tr>
+              <tr><td>Taxable Gratuity</td><td class="num">2,07,692</td></tr>
+              <tr class="total"><td>Gross Salary</td><td class="num">9,67,292</td></tr>
+            </table>
+          </div>
+          <div class="step"><span class="label">Step 7 — Less: Standard Deduction</span><div class="calc">9,67,292 − 50,000 = ₹9,17,292</div></div>
+        </div>
+        <div class="answer-final">Answer: Income from Salary = ₹9,17,292</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-head">Worked Sum 2 — RFA + Motor Car perquisites + LTA <span class="exc-tag">perquisite-heavy</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Kabir is employed with a private company in Delhi (population &gt; 40 lakh). For P.Y. 2025-26:
+        <br>• Basic Salary ₹60,000 p.m. • DA (retirement terms) ₹12,000 p.m. • Bonus ₹48,000
+        <br>• Company provides unfurnished rent-free accommodation, owned by the employer, in Delhi
+        <br>• Company provides a car (1,400 cc) for both official and personal use; running/maintenance met by employer; driver also provided
+        <br>• LTA received ₹25,000; actual eligible travel cost incurred ₹18,000
+        <br>Compute Gross Salary and Income from Salary for A.Y. 2026-27.</div>
+        <div class="steps">
+          <div class="step"><span class="label">Step 1 — Basic, DA, Bonus</span><div class="calc">Basic: 60,000×12 = 7,20,000
+DA: 12,000×12 = 1,44,000
+Bonus (received during the year) = 48,000</div></div>
+          <div class="step"><span class="label">Step 2 — Salary for RFA valuation</span><div class="calc">Basic + DA + Bonus = 7,20,000+1,44,000+48,000 = ₹9,12,000</div></div>
+          <div class="step"><span class="label">Step 3 — RFA perquisite (Delhi, population &gt; 40 lakh → 10%)</span><div class="calc">10% × 9,12,000 = ₹91,200 (unfurnished, no rent recovered)</div></div>
+          <div class="step"><span class="label">Step 4 — Motor car perquisite (≤1.6 litre, both uses, employer meets expenses, with driver)</span><div class="calc">(1,800 + 900) × 12 = ₹32,400</div></div>
+          <div class="step"><span class="label">Step 5 — LTA</span><div class="calc">Received 25,000; exempt (actual eligible cost) 18,000 → taxable = 25,000 − 18,000 = ₹7,000</div></div>
+          <div class="step"><span class="label">Step 6 — Gross Salary</span>
+            <table class="calc-table">
+              <tr><th>Component</th><th class="num">₹</th></tr>
+              <tr><td>Basic Salary</td><td class="num">7,20,000</td></tr>
+              <tr><td>Dearness Allowance</td><td class="num">1,44,000</td></tr>
+              <tr><td>Bonus</td><td class="num">48,000</td></tr>
+              <tr><td>RFA perquisite</td><td class="num">91,200</td></tr>
+              <tr><td>Motor car perquisite</td><td class="num">32,400</td></tr>
+              <tr><td>Taxable LTA</td><td class="num">7,000</td></tr>
+              <tr class="total"><td>Gross Salary</td><td class="num">10,42,600</td></tr>
+            </table>
+          </div>
+          <div class="step"><span class="label">Step 7 — Less: Standard Deduction</span><div class="calc">10,42,600 − 50,000 = ₹9,92,600</div></div>
+        </div>
+        <div class="answer-final">Answer: Income from Salary = ₹9,92,600</div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 1 — HRA + Uniform Allowance + Pension</div>
+        <div class="q-text"><strong>Q.</strong> Mrs. Priya works in Chennai (metro). Basic ₹40,000 p.m.; DA (retirement terms) ₹8,000 p.m.; HRA received ₹10,000 p.m., rent paid ₹9,000 p.m.; Uniform Allowance ₹2,000 p.m. (actual spend ₹1,200 p.m.); she commuted 30% of her pension and received ₹1,80,000 — she did not receive any gratuity. Compute her Income from Salary for A.Y. 2026-27.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Basic + DA</span><div class="calc">Basic: 40,000×12 = 4,80,000; DA: 8,000×12 = 96,000</div></div>
+            <div class="step"><span class="label">HRA</span><div class="calc">Salary for HRA = (40,000+8,000)×12 = 5,76,000
+(i) Actual HRA = 10,000×12 = 1,20,000
+(ii) Rent − 10% salary = (9,000×12) − 57,600 = 50,400
+(iii) 50% of salary = 2,88,000
+Exempt = ₹50,400 → Taxable HRA = 1,20,000 − 50,400 = ₹69,600</div></div>
+            <div class="step"><span class="label">Uniform Allowance</span><div class="calc">Received: 2,000×12 = 24,000; Exempt (actual spend): 1,200×12 = 14,400
+Taxable = 24,000 − 14,400 = ₹9,600</div></div>
+            <div class="step"><span class="label">Commuted Pension</span><div class="calc">Full value = 1,80,000 ÷ 30 × 100 = 6,00,000
+No gratuity received → exempt = ½ × 6,00,000 = 3,00,000, which exceeds the amount received
+Taxable = ₹0 (fully exempt, cannot go negative)</div></div>
+            <div class="step"><span class="label">Gross Salary</span>
+              <table class="calc-table">
+                <tr><th>Component</th><th class="num">₹</th></tr>
+                <tr><td>Basic Salary</td><td class="num">4,80,000</td></tr>
+                <tr><td>Dearness Allowance</td><td class="num">96,000</td></tr>
+                <tr><td>Taxable HRA</td><td class="num">69,600</td></tr>
+                <tr><td>Taxable Uniform Allowance</td><td class="num">9,600</td></tr>
+                <tr><td>Taxable Commuted Pension</td><td class="num">0</td></tr>
+                <tr class="total"><td>Gross Salary</td><td class="num">6,55,200</td></tr>
+              </table>
+            </div>
+            <div class="step"><span class="label">Less: Standard Deduction</span><div class="calc">6,55,200 − 50,000 = ₹6,05,200</div></div>
+          </div>
+          <div class="answer-final">Answer: Income from Salary = ₹6,05,200</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice 2 — RFA (non-metro) + Leave Encashment during service <span class="exc-tag">fully taxable trap</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Farhan works in a non-metro city (population &lt; 15 lakh). Basic ₹35,000 p.m.; DA (retirement terms) ₹5,000 p.m.; company provides unfurnished RFA (employer-owned). He also encashed leave WHILE STILL IN SERVICE (not at retirement) and received ₹40,000. Compute Gross Salary and Income from Salary (ignore any other allowances/perquisites).</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Basic + DA</span><div class="calc">Basic: 35,000×12 = 4,20,000; DA: 5,000×12 = 60,000</div></div>
+            <div class="step"><span class="label">RFA (non-metro, population &lt; 15 lakh → 5%)</span><div class="calc">Salary for RFA = (35,000+5,000)×12 = 4,80,000
+5% × 4,80,000 = ₹24,000</div></div>
+            <div class="step"><span class="label">Leave encashment during service</span><div class="calc">Encashed WHILE still employed → fully taxable, no exemption at all → taxable = ₹40,000</div></div>
+            <div class="step"><span class="label">Gross Salary</span>
+              <table class="calc-table">
+                <tr><th>Component</th><th class="num">₹</th></tr>
+                <tr><td>Basic Salary</td><td class="num">4,20,000</td></tr>
+                <tr><td>Dearness Allowance</td><td class="num">60,000</td></tr>
+                <tr><td>RFA perquisite</td><td class="num">24,000</td></tr>
+                <tr><td>Leave encashment (during service)</td><td class="num">40,000</td></tr>
+                <tr class="total"><td>Gross Salary</td><td class="num">5,44,000</td></tr>
+              </table>
+            </div>
+            <div class="step"><span class="label">Less: Standard Deduction</span><div class="calc">5,44,000 − 50,000 = ₹4,94,000</div></div>
+          </div>
+          <div class="answer-final">Answer: Income from Salary = ₹4,94,000</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Built from Unit I &amp; Unit II of the BBA303-5 Taxation Laws &amp; Practice course plan (Christ University). All worked/practice sums follow the <strong>Old Regime</strong> (standard deduction ₹50,000; New Regime standard deduction is ₹75,000 but disallows HRA/allowance exemptions). Gratuity ceiling ₹20,00,000; family pension deduction ₹15,000 (old) / ₹25,000 (new regime) — verify against the latest Finance Act before your exam.
+</footer>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  });
+
+  function toggleSol(btn) {
+    const sol = btn.nextElementSibling;
+    const showing = sol.style.display === 'block';
+    sol.style.display = showing ? 'none' : 'block';
+    btn.textContent = showing ? 'Show Solution' : 'Hide Solution';
+  }
+
+  // Smooth-scroll for jump links + ensure target topic's tab is active
+  document.querySelectorAll('.jumplist a').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = a.getAttribute('href').slice(1);
+      document.getElementById(id).scrollIntoView({behavior: 'smooth', block: 'start'});
+    });
+  });
+</script>
+
+</body>
+</html>
