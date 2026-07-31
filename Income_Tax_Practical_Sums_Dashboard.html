@@ -95,7 +95,7 @@
 <nav class="tabs">
   <button class="tab-btn active" data-tab="start">Before You Start<span class="n">Slabs · surcharge · cess · rebate</span></button>
   <button class="tab-btn" data-tab="res">Residential Status<span class="n">Chapter 1 · 9 solved cases</span></button>
-  <button class="tab-btn" data-tab="inc">Incidence of Tax<span class="n">Chapter 1 · 4 solved sums</span></button>
+  <button class="tab-btn" data-tab="inc">Incidence of Tax<span class="n">Chapter 1 · 5 solved sums</span></button>
   <button class="tab-btn" data-tab="sal1">PF · Gratuity · Pension<span class="n">Chapter 2</span></button>
   <button class="tab-btn" data-tab="sal2">Allowances · Perquisites<span class="n">Chapter 2</span></button>
   <button class="tab-btn" data-tab="marks">By Marks<span class="n">5 · 10 · 15 mark plan</span></button>
@@ -842,6 +842,55 @@ Both satisfied</div></div>
           </table>
         </div>
       </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Sum 5 — Mr. Naresh <span class="exc-tag">includes the "part received in India" split</span></div>
+        <div class="q-text"><strong>Q.</strong> Compute the Gross Total Income of Mr. Naresh for PY 2025-26 if he is (a) OR (b) NOR (c) NR:
+        <br>i. Profit on sale of a plant in London ₹3,00,000, of which 1/3 was received in India
+        <br>ii. Salary from an Indian company for services rendered in Dubai, received in Dubai — ₹4,00,000
+        <br>iii. Interest on Post Office Savings Bank account in India — ₹8,000
+        <br>iv. Income from agriculture in Bhutan, remitted to India — ₹60,000
+        <br>v. Gift received in India from a friend (non-relative) — ₹90,000
+        <br>vi. Profit from a business in Mumbai, controlled from London — ₹2,50,000
+        <br>vii. Dividend from a foreign company, received in India — ₹35,000
+        <br>viii. Profit from a business in Sri Lanka, controlled from Chennai — ₹1,80,000</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Classify each item BEFORE writing the table</span>
+              <table class="calc-table">
+                <tr><th>Item</th><th>Reasoning</th><th>Taxable for</th></tr>
+                <tr><td>i. Plant in London — 1/3 (₹1,00,000) received in India</td><td>Received in India → Indian income</td><td>OR, NOR, NR</td></tr>
+                <tr><td>i. Plant in London — 2/3 (₹2,00,000) received abroad</td><td>Accrued and received outside India</td><td>OR only</td></tr>
+                <tr><td>ii. Salary for services in Dubai, received in Dubai</td><td>Services rendered abroad AND received abroad — the employer being Indian does not matter</td><td>OR only</td></tr>
+                <tr><td>iii. Post Office Savings interest in India</td><td>Accrues in India</td><td>OR, NOR, NR</td></tr>
+                <tr><td>iv. Bhutan agricultural income, remitted to India</td><td>Foreign agri income is NOT exempt u/s 10(1); remitting is not "receiving in India"</td><td>OR only</td></tr>
+                <tr><td>v. Gift ₹90,000 from a non-relative, received in India</td><td>Exceeds ₹50,000 → entire amount taxable; received in India</td><td>OR, NOR, NR</td></tr>
+                <tr><td>vi. Business IN Mumbai, controlled from London</td><td>The business is carried on in India → Indian income. Where control sits is irrelevant here</td><td>OR, NOR, NR</td></tr>
+                <tr><td>vii. Dividend from a foreign company, received in India</td><td>First received in India → Indian income</td><td>OR, NOR, NR</td></tr>
+                <tr><td>viii. Sri Lanka business, controlled from Chennai</td><td>Foreign income but CONTROLLED from India</td><td>OR, NOR</td></tr>
+              </table>
+            </div>
+            <div class="step"><span class="label">Step 2 — Statement of Gross Total Income</span>
+              <table class="calc-table">
+                <tr><th>Particulars</th><th class="num">OR (₹)</th><th class="num">NOR (₹)</th><th class="num">NR (₹)</th></tr>
+                <tr><td>i. Plant sale, 1/3 received in India</td><td class="num">1,00,000</td><td class="num">1,00,000</td><td class="num">1,00,000</td></tr>
+                <tr><td>i. Plant sale, 2/3 received outside India</td><td class="num">2,00,000</td><td class="num">—</td><td class="num">—</td></tr>
+                <tr><td>ii. Salary for Dubai services, received in Dubai</td><td class="num">4,00,000</td><td class="num">—</td><td class="num">—</td></tr>
+                <tr><td>iii. Post Office Savings interest in India</td><td class="num">8,000</td><td class="num">8,000</td><td class="num">8,000</td></tr>
+                <tr><td>iv. Bhutan agricultural income, remitted</td><td class="num">60,000</td><td class="num">—</td><td class="num">—</td></tr>
+                <tr><td>v. Gift from non-relative, received in India</td><td class="num">90,000</td><td class="num">90,000</td><td class="num">90,000</td></tr>
+                <tr><td>vi. Business in Mumbai, controlled from London</td><td class="num">2,50,000</td><td class="num">2,50,000</td><td class="num">2,50,000</td></tr>
+                <tr><td>vii. Dividend from foreign co., received in India</td><td class="num">35,000</td><td class="num">35,000</td><td class="num">35,000</td></tr>
+                <tr><td>viii. Sri Lanka business, controlled from Chennai</td><td class="num">1,80,000</td><td class="num">1,80,000</td><td class="num">—</td></tr>
+                <tr class="total"><td>Gross Total Income</td><td class="num">13,23,000</td><td class="num">6,63,000</td><td class="num">4,83,000</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="answer-final">Answer: GTI — OR ₹13,23,000 · NOR ₹6,63,000 · NR ₹4,83,000</div>
+          <div class="trap"><strong>⚠ Four traps in this one sum:</strong> (1) item i must be SPLIT into two rows — never treat a part-received item as one line (2) item ii: an Indian employer does not make foreign-rendered, foreign-received salary Indian income (3) item iv: foreign agricultural income is fully taxable for OR — only INDIAN agricultural income is exempt u/s 10(1), and "remitted to India" never converts foreign income into Indian income (4) item vi: the business is IN India, so control from London changes nothing.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1330,6 +1379,100 @@ Taxable = 24,000 − 18,000 = ₹6,000</div></div>
           </div>
         </div>
         <div class="answer-final">Answer: Total taxable allowances = ₹85,200</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head"><h2>HOW TO SOLVE ANY 15-MARK SALARY SUM — the master method</h2><span class="head-right"><span class="chapter-tag">Read this first</span></span></div>
+    <div class="topic-body">
+      <div class="rule-box">
+        <p class="rb-note">Every 15-mark case study is the <strong>same question with different numbers</strong>. Follow this order every single time and you cannot get lost. Do NOT jump straight to the answer table — work the side-calculations first, then assemble.</p>
+
+        <div class="rb-label">PHASE 1 — Write down the easy items (no calculation needed)</div>
+        <table class="ref-table">
+          <tr><th>Item</th><th>What to write</th></tr>
+          <tr><td>Basic Salary</td><td>monthly figure × 12</td></tr>
+          <tr><td>Dearness Allowance</td><td>monthly figure × 12</td></tr>
+          <tr><td>Bonus / Commission</td><td>as given (usually already annual)</td></tr>
+        </table>
+
+        <div class="rb-label">PHASE 2 — Work out each allowance separately (side calculation)</div>
+        <p class="rb-note">For every allowance ask ONE question: <em>is it fully taxable, partly exempt, or fully exempt?</em></p>
+        <table class="ref-table">
+          <tr><th>Type</th><th>Which ones</th><th>Taxable amount</th></tr>
+          <tr><td>Fully taxable</td><td>DA, City Compensatory, Overtime, Servant, Project, Tiffin, Medical, Special, Transport (normal employee)</td><td>the whole amount</td></tr>
+          <tr><td>Fixed statutory exemption</td><td>Children Education (₹100 p.m./child, max 2) · Hostel (₹300 p.m./child, max 2) · Transport for a disabled employee (₹3,200 p.m.)</td><td>Received − Exempt limit</td></tr>
+          <tr><td>Exempt to the extent SPENT</td><td>Uniform, Conveyance, Travelling, Daily, Research, Academic</td><td>Received − Actually spent</td></tr>
+          <tr><td>Least-of-three formula</td><td>HRA only</td><td>Received − Exempt (least of the 3)</td></tr>
+        </table>
+        <div class="calc">HRA exempt = LEAST of:
+  (i)  Actual HRA received
+  (ii) Rent paid − 10% of salary
+  (iii) 50% of salary (metro) / 40% of salary (non-metro)
+where salary = Basic + DA(retirement terms) + commission as fixed % of turnover</div>
+
+        <div class="rb-label">PHASE 3 — Value each perquisite (side calculation)</div>
+        <p class="rb-note"><strong>Rent-Free Accommodation is the big one — always compute "salary for RFA" FIRST:</strong></p>
+        <div class="calc">Salary for RFA = Basic + DA(retirement part) + Bonus + Commission + ALL taxable allowances
+                 (i.e. everything from Phase 1 and Phase 2 added up)</div>
+        <table class="ref-table">
+          <tr><th>Population of the city</th><th>Rate on that salary</th></tr>
+          <tr><td>Less than 15 lakh</td><td>5%</td></tr>
+          <tr><td>15 lakh to 40 lakh</td><td>7.5%</td></tr>
+          <tr><td>Above 40 lakh</td><td>10%</td></tr>
+        </table>
+        <div class="calc">Then:  + 10% p.a. of furniture cost (if furnished)
+       − rent recovered from the employee (if any)
+       = Taxable value of the accommodation</div>
+        <p class="rb-note">Other perquisites — just look them up and write the figure:</p>
+        <table class="ref-table">
+          <tr><th>Perquisite</th><th>Taxable value</th></tr>
+          <tr><td>Car ≤1.6L, official+personal, employer pays running</td><td>₹1,800 p.m. (+₹900 p.m. if driver given)</td></tr>
+          <tr><td>Car &gt;1.6L, official+personal, employer pays running</td><td>₹2,400 p.m. (+₹900 p.m. if driver given)</td></tr>
+          <tr><td>Car used wholly for official purposes</td><td>Nil</td></tr>
+          <tr><td>Servant / gardener / watchman / cook</td><td>Actual salary paid by employer — fully taxable</td></tr>
+          <tr><td>Telephone / mobile (bill paid or reimbursed)</td><td>Nil — fully exempt</td></tr>
+          <tr><td>Tea, coffee, snacks at office</td><td>Nil — exempt</td></tr>
+          <tr><td>Free lunch / meals</td><td>Fully taxable</td></tr>
+          <tr><td>Health club, credit card, gift vouchers paid by employer</td><td>Fully taxable</td></tr>
+          <tr><td>Loan from employer up to ₹20,000</td><td>Nil</td></tr>
+          <tr><td>Hotel accommodation on transfer, up to 15 days</td><td>Nil</td></tr>
+        </table>
+
+        <div class="rb-label">PHASE 4 — The two Provident Fund add-backs (easy marks, often missed)</div>
+        <div class="calc">Employer's contribution:
+   Exempt limit = 12% of (Basic + DA)          ← note: limit is on Basic+DA
+   Contributed  = as given (often a % of BASIC only)  ← different base!
+   Taxable      = Contributed − Exempt limit    (if negative, write Nil)
+
+Interest credited to PF:
+   Exempt up to 9.5% p.a.
+   Taxable = Interest credited − Interest at 9.5%</div>
+
+        <div class="rb-label">PHASE 5 — Assemble the statement and finish</div>
+        <div class="calc">Basic + DA + Bonus/Commission
+  + all taxable allowances (Phase 2)
+  + all taxable perquisites (Phase 3)
+  + excess PF contribution and excess PF interest (Phase 4)
+  = GROSS SALARY
+  − Standard Deduction ₹75,000  (New Regime)
+  = INCOME FROM SALARY / TOTAL TAXABLE INCOME</div>
+        <p class="rb-note">Then, if the question asks for tax liability:</p>
+        <div class="calc">1. Apply slabs: 0-4L Nil · 4-8L 5% · 8-12L 10% · 12-16L 15% · 16-20L 20% · 20-24L 25% · above 24L 30%
+2. Less: Rebate u/s 87A — only if Total Income ≤ ₹12,00,000 (lower of ₹60,000 or the tax)
+3. Add: Surcharge — only if Total Income &gt; ₹50,00,000
+4. Add: Health & Education Cess @ 4% on (tax − rebate + surcharge)
+5. Round off to the nearest ₹10</div>
+
+        <div class="rb-label">Presentation tips that earn marks</div>
+        <ul>
+          <li>Show every side-calculation in a <strong>separate working note</strong> below the main statement (Working Note 1: HRA, Working Note 2: RFA, and so on). Examiners award marks for workings even when the final figure is wrong.</li>
+          <li>Write "<strong>Nil</strong>" for exempt items rather than leaving the row blank — it proves you considered the item and knew it was exempt.</li>
+          <li>Label the final line clearly as "Income from Salary" or "Total Taxable Income" — matching the words in the question.</li>
+        </ul>
+
+        <div class="trap"><strong>⚠ The five most common mistakes in this question:</strong> (1) forgetting to include taxable allowances inside "salary for RFA" (2) using the wrong population % for RFA (3) using ₹2,400 for a car that is exactly 1.6 litre — "not exceeding 1.6L" means ₹1,800 (4) computing the 12% PF limit on Basic only instead of Basic + DA (5) deducting ₹50,000 standard deduction instead of ₹75,000 under the New Regime.</div>
       </div>
     </div>
   </div>
