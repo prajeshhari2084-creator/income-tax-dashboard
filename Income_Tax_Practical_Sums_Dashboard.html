@@ -102,6 +102,7 @@
   <button class="tab-btn" data-tab="pyq">PY Question Paper<span class="n">Aug 2025 · fully solved</span></button>
   <button class="tab-btn" data-tab="mock">Mock Paper 1<span class="n">Sit it like the real exam</span></button>
   <button class="tab-btn" data-tab="mock2">Mock Paper 2<span class="n">House property · leave encashment</span></button>
+  <button class="tab-btn" data-tab="hp" style="opacity:.6">House Property<span class="n">NOT in your exam · reference only</span></button>
   <button class="tab-btn" data-tab="rates">ALL RATES<span class="n">Every %, slab &amp; limit in one place</span></button>
 </nav>
 
@@ -965,6 +966,77 @@ Both satisfied</div></div>
   </div>
 
   <div class="topic">
+    <div class="topic-head"><h2>Provident Fund — practice sums</h2><span class="head-right"><span class="chapter-tag">Chapter 2 · Unit II</span><span class="marks">5–10 marks</span></span></div>
+    <div class="topic-body">
+      <div class="rule-box">
+        <div class="rb-label">HOW TO SOLVE any RPF sum — 3 steps</div>
+        <div class="calc">STEP 1  Salary for PF = Basic + DA (only the part entering retirement benefits) + commission as fixed % of turnover
+STEP 2  Employer's contribution:  Exempt = 12% of that salary
+                                  Taxable = Contributed − 12% limit   (if negative → NIL)
+STEP 3  Interest credited:        Exempt = interest at 9.5% p.a.
+                                  Taxable = Interest credited − Interest at 9.5%</div>
+        <p class="rb-note">The employee's OWN contribution is never taxed again (it comes out of salary already taxed). Under the New Regime it also gets no 80C deduction.</p>
+        <div class="trap"><strong>⚠ The two bases are different.</strong> The question usually states the employer's contribution as a % of <strong>BASIC ONLY</strong>, while the 12% exemption limit is on <strong>Basic + DA(retirement part)</strong>. Compute each on its own base — never assume "14% contributed vs 12% limit means 2% is taxable".</div>
+        <div class="rb-label">Shortcut for the interest calculation</div>
+        <div class="calc">Interest at 9.5% = Interest credited × (9.5 ÷ rate credited)
+Example: ₹88,000 credited at 11% → 88,000 × 9.5/11 = ₹76,000 exempt</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-head">Worked Sum — RPF, both add-backs</div>
+        <div class="q-text"><strong>Q.</strong> Mr. Anand's basic salary is ₹60,000 p.m. and DA ₹15,000 p.m., of which 60% forms part of retirement benefits. His employer contributes 14% of basic salary to a Recognised Provident Fund, and Mr. Anand contributes the same. Interest of ₹88,000 was credited to the fund at 11% per annum. Compute the amount taxable under the head Salaries in respect of the provident fund.</div>
+        <div class="steps">
+          <div class="step"><span class="label">Step 1 — Salary for PF purposes</span>
+            <table class="calc-table">
+              <tr><th>Component</th><th>Calculation</th><th class="num">₹</th></tr>
+              <tr><td>Basic Salary</td><td>60,000 × 12</td><td class="num">7,20,000</td></tr>
+              <tr><td>DA entering retirement benefits</td><td>60% × (15,000 × 12)</td><td class="num">1,08,000</td></tr>
+              <tr class="total"><td colspan="2">Salary for PF</td><td class="num">8,28,000</td></tr>
+            </table>
+            <div class="calc">The other 40% of DA (₹72,000) does NOT enter retirement benefits, so it is excluded here — but it is still fully taxable as DA in the salary computation.</div>
+          </div>
+          <div class="step"><span class="label">Step 2 — Employer's contribution</span>
+            <table class="calc-table">
+              <tr><th>Particulars</th><th class="num">₹</th></tr>
+              <tr><td>Contributed by employer = 14% of BASIC (14% × 7,20,000)</td><td class="num">1,00,800</td></tr>
+              <tr><td>Exempt limit = 12% of SALARY FOR PF (12% × 8,28,000)</td><td class="num">99,360</td></tr>
+              <tr class="total"><td>Taxable excess</td><td class="num">1,440</td></tr>
+            </table>
+          </div>
+          <div class="step"><span class="label">Step 3 — Interest credited</span>
+            <table class="calc-table">
+              <tr><th>Particulars</th><th class="num">₹</th></tr>
+              <tr><td>Interest credited @ 11%</td><td class="num">88,000</td></tr>
+              <tr><td>Exempt: interest at 9.5% = 88,000 × 9.5/11</td><td class="num">76,000</td></tr>
+              <tr class="total"><td>Taxable excess</td><td class="num">12,000</td></tr>
+            </table>
+          </div>
+          <div class="step"><span class="label">Step 4 — Employee's own contribution</span><div class="calc">Not taxable — it is paid out of salary that has already been taxed. Under the New Regime no 80C deduction is available either. Write "Nil" against it.</div></div>
+          <div class="step"><span class="label">Step 5 — Total taxable in respect of PF</span><div class="calc">1,440 + 12,000 = ₹13,440</div></div>
+        </div>
+        <div class="answer-final">Answer: ₹13,440 is taxable under the head Salaries (₹1,440 excess contribution + ₹12,000 excess interest)</div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice — theory table, all four PF types <span class="exc-tag">5 marks</span></div>
+        <div class="q-text"><strong>Q.</strong> Distinguish between Statutory Provident Fund, Recognised Provident Fund, Unrecognised Provident Fund and Public Provident Fund with reference to their tax treatment.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <table class="calc-table">
+            <tr><th>Basis</th><th>SPF</th><th>RPF</th><th>URPF</th><th>PPF</th></tr>
+            <tr><td>Who it applies to</td><td>Government, semi-government, university employees</td><td>Most organised-sector employees; recognised by the Commissioner</td><td>Not recognised by the Commissioner</td><td>Any individual's own account; no employer involved</td></tr>
+            <tr><td>Employer's contribution</td><td>Fully exempt</td><td>Exempt up to 12% of salary; excess taxable</td><td>Not taxed at the time of contribution</td><td>Not applicable</td></tr>
+            <tr><td>Interest credited</td><td>Fully exempt</td><td>Exempt up to 9.5% p.a.; excess taxable</td><td>Not taxed yearly</td><td>Fully exempt</td></tr>
+            <tr><td>Employee's contribution</td><td>Eligible u/s 80C</td><td>Eligible u/s 80C</td><td>No deduction</td><td>Eligible u/s 80C</td></tr>
+            <tr><td>Lump sum at retirement</td><td>Fully exempt</td><td>Exempt if 5 years' continuous service</td><td>Employer's share + its interest taxable as salary; interest on own share taxable as Other Sources</td><td>Fully exempt</td></tr>
+          </table>
+          <div class="note-box">Under the New Regime the 80C deduction is not available, but the exemption of the employer's contribution (12%) and of interest (9.5%) still applies exactly as above — those are Sec 10/17 provisions, not Chapter VI-A.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
     <div class="topic-head"><h2>Gratuity — Sec. 10(10)</h2><span class="head-right"><span class="chapter-tag">Chapter 2 · Unit II</span></span></div>
     <div class="topic-body">
       <div class="rule-box">
@@ -1031,6 +1103,45 @@ Both satisfied</div></div>
           <div class="answer-final">Answer: Taxable gratuity = 3,40,000 − 3,01,154 = ₹38,846</div>
         </div>
       </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice — Death of the employee <span class="exc-tag">5 marks · common variant</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Latha's husband died while in service on 31st December 2025, after 18 years and 9 months with a private company covered under the Payment of Gratuity Act, 1972. At the time of his death his basic salary was ₹45,000 p.m. and DA ₹9,000 p.m. (forming part of retirement benefits). The company paid gratuity of ₹9,00,000 to his widow. Compute the taxable gratuity.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Completed years</span><div class="calc">18 years 9 months → 9 months is MORE than 6 months → round UP to 19 years</div></div>
+            <div class="step"><span class="label">Step 2 — Salary and formula</span><div class="calc">Salary = Basic + DA = 45,000 + 9,000 = ₹54,000
+15/26 × 54,000 × 19 = ₹5,91,923</div></div>
+            <div class="step"><span class="label">Step 3 — Least of three</span>
+              <table class="calc-table">
+                <tr><th>Limit</th><th class="num">₹</th></tr>
+                <tr><td>(i) Statutory maximum</td><td class="num">20,00,000</td></tr>
+                <tr><td>(ii) 15/26 × 54,000 × 19</td><td class="num">5,91,923</td></tr>
+                <tr><td>(iii) Actual gratuity received</td><td class="num">9,00,000</td></tr>
+                <tr class="total"><td>Exempt</td><td class="num">5,91,923</td></tr>
+              </table>
+            </div>
+            <div class="step"><span class="label">Step 4 — Taxable</span><div class="calc">9,00,000 − 5,91,923 = ₹3,08,077</div></div>
+          </div>
+          <div class="answer-final">Answer: Taxable gratuity = ₹3,08,077 (exempt ₹5,91,923)</div>
+          <div class="note-box"><strong>Death cases follow exactly the same formula</strong> as retirement — the same three limits, the same rounding rule. The only difference is who receives it. The gratuity is assessed in the hands of the legal heir who received it.</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice — Government employee <span class="exc-tag">5 marks · one-line answer</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Balan, an employee of the State Government, retired after 33 years of service and received gratuity of ₹24,00,000. His last drawn Basic was ₹80,000 and DA ₹16,000 p.m. Compute his taxable gratuity.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Identify the category FIRST</span><div class="calc">He is a State Government employee. Gratuity received by a Central or State Government employee (or an employee of a local authority) is FULLY EXEMPT u/s 10(10)(i).</div></div>
+            <div class="step"><span class="label">Step 2 — Do NOT apply the formula</span><div class="calc">No ₹20,00,000 ceiling and no 15/26 calculation applies. The salary and years of service given in the question are DISTRACTORS.</div></div>
+          </div>
+          <div class="answer-final">Answer: The entire ₹24,00,000 is exempt. Taxable gratuity = ₹Nil</div>
+          <div class="trap"><strong>⚠ Note that ₹24,00,000 exceeds the ₹20,00,000 ceiling.</strong> That ceiling applies only to non-government employees. Students who mechanically apply "least of three" here would wrongly tax ₹4,00,000.</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1080,6 +1191,79 @@ Both satisfied</div></div>
           </div>
         </div>
       </div>
+
+      <div class="rule-box">
+        <div class="rb-label">HOW TO SOLVE any pension sum — 4 steps</div>
+        <div class="calc">STEP 1  Split the year into BEFORE commutation and AFTER commutation
+STEP 2  Uncommuted before  = full monthly pension × number of those months
+        Uncommuted after   = (100% − % commuted) × monthly pension × remaining months
+        Both are FULLY TAXABLE
+STEP 3  Full value of commuted pension = (amount received ÷ % commuted) × 100
+STEP 4  Exempt = FULL value × ⅓ (gratuity received)  or  × ½ (no gratuity)
+        Government employee → commuted pension fully exempt
+TOTAL taxable pension = uncommuted (both parts) + taxable commuted</div>
+        <div class="trap"><strong>⚠ Two errors that cost marks every time:</strong> (1) applying ⅓ or ½ to the amount RECEIVED instead of the FULL value — always convert to 100% first; (2) forgetting that the monthly pension DROPS after commutation, so the later months are computed at the reduced percentage.</div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice — Government employee, mid-year commutation <span class="exc-tag">5 marks</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Rao, a Central Government employee, retired on 30th June 2025. He was entitled to a pension of ₹30,000 per month from July 2025. On 1st December 2025 he commuted 40% of his pension and received ₹6,00,000. Compute his total taxable pension for PY 2025-26.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Split the year</span><div class="calc">Pension starts July 2025; commutation on 1 December 2025.
+July to November = 5 months at the FULL rate
+December to March = 4 months at the REDUCED rate (60%, since 40% was commuted)</div></div>
+            <div class="step"><span class="label">Step 2 — Uncommuted pension (always fully taxable)</span>
+              <table class="calc-table">
+                <tr><th>Period</th><th>Calculation</th><th class="num">₹</th></tr>
+                <tr><td>Jul – Nov (5 months, full rate)</td><td>30,000 × 5</td><td class="num">1,50,000</td></tr>
+                <tr><td>Dec – Mar (4 months, 60% of 30,000 = 18,000)</td><td>18,000 × 4</td><td class="num">72,000</td></tr>
+                <tr class="total"><td colspan="2">Total uncommuted — fully taxable</td><td class="num">2,22,000</td></tr>
+              </table>
+            </div>
+            <div class="step"><span class="label">Step 3 — Commuted pension</span><div class="calc">He is a CENTRAL GOVERNMENT employee → commuted pension is FULLY EXEMPT u/s 10(10A)(i)
+Taxable commuted pension = ₹Nil
+No need to compute the full value or apply ⅓ / ½ — those apply only to non-government employees.</div></div>
+            <div class="step"><span class="label">Step 4 — Total</span>
+              <table class="calc-table">
+                <tr><th>Particulars</th><th class="num">₹</th></tr>
+                <tr><td>Uncommuted pension</td><td class="num">2,22,000</td></tr>
+                <tr><td>Commuted pension (fully exempt)</td><td class="num">Nil</td></tr>
+                <tr class="total"><td>Total Taxable Pension</td><td class="num">2,22,000</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="answer-final">Answer: Total taxable pension = ₹2,22,000</div>
+          <div class="trap"><strong>⚠ Even for a government employee the UNCOMMUTED pension is fully taxable.</strong> Only the COMMUTED lump sum is exempt. Students who write "government employee → pension exempt" lose all the marks.</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice — Family Pension <span class="exc-tag">5 marks · different HEAD of income</span></div>
+        <div class="q-text"><strong>Q.</strong> After the death of her husband, a retired non-government employee, Mrs. Rekha received a family pension of ₹20,000 per month throughout PY 2025-26. Compute the amount taxable and state the head under which it is assessed. She has opted for the New Tax Regime.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Identify the head</span><div class="calc">A pension received by a legal heir AFTER the employee's death is "Family Pension".
+There is no employer–employee relationship between the company and the widow, so it cannot be taxed as Salary.
+It is assessed under "INCOME FROM OTHER SOURCES".</div></div>
+            <div class="step"><span class="label">Step 2 — Amount received</span><div class="calc">20,000 × 12 = ₹2,40,000</div></div>
+            <div class="step"><span class="label">Step 3 — Deduction u/s 57(iia)</span>
+              <table class="calc-table">
+                <tr><th>Limit</th><th>Calculation</th><th class="num">₹</th></tr>
+                <tr><td>(i) One-third of the family pension</td><td>⅓ × 2,40,000</td><td class="num">80,000</td></tr>
+                <tr><td>(ii) Statutory ceiling (New Regime)</td><td>—</td><td class="num">25,000</td></tr>
+                <tr class="total"><td colspan="2">Deduction = LOWER of the two</td><td class="num">25,000</td></tr>
+              </table>
+              <div class="calc">Under the Old Regime the ceiling would be ₹15,000 instead of ₹25,000.</div>
+            </div>
+            <div class="step"><span class="label">Step 4 — Taxable family pension</span><div class="calc">2,40,000 − 25,000 = ₹2,15,000</div></div>
+          </div>
+          <div class="answer-final">Answer: Taxable family pension = ₹2,15,000, assessed under "Income from Other Sources"</div>
+          <div class="trap"><strong>⚠ No standard deduction of ₹75,000 here.</strong> That belongs to the Salary head. A family pensioner gets only the Sec 57(iia) deduction. Never claim both.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1118,6 +1302,113 @@ Both satisfied</div></div>
           <tr class="total"><td colspan="2">Exempt HRA (least of the 3)</td><td class="num">7,000</td></tr>
           <tr><td colspan="2">Taxable HRA (12,000 − 7,000)</td><td class="num">5,000</td></tr>
         </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head"><h2>Allowances — practice sums</h2><span class="head-right"><span class="chapter-tag">Chapter 2 · Unit II</span><span class="marks">5–10 marks</span></span></div>
+    <div class="topic-body">
+      <div class="rule-box">
+        <div class="rb-label">HOW TO SOLVE any allowance sum — sort into 4 buckets first</div>
+        <div class="calc">BUCKET 1  Fully taxable          → write the whole amount
+BUCKET 2  Fixed statutory limit  → Received − the notified limit
+BUCKET 3  Exempt as SPENT        → Received − actually spent
+BUCKET 4  HRA only               → Received − least of three</div>
+        <p class="rb-note">Do each allowance as a separate line, then total. Never try to do them in your head — examiners give marks per allowance.</p>
+        <div class="trap"><strong>⚠ Watch for a change mid-year.</strong> If salary, rent or the city changes during the year, you must compute HRA <strong>period-wise</strong> — one calculation for each period, then add the exempt amounts. A single yearly calculation will be wrong.</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-head">Worked Sum — HRA when salary changes mid-year <span class="exc-tag">the hardest HRA variant</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Vivek is employed in Mumbai. His basic salary was ₹50,000 p.m. from April to September 2025, and was increased to ₹60,000 p.m. from October 2025. He receives DA at 20% of basic salary (forming part of retirement benefits) and HRA at 40% of basic salary. He paid rent of ₹25,000 per month throughout the year. Compute his taxable HRA for AY 2026-27.</div>
+        <div class="steps">
+          <div class="step"><span class="label">Step 1 — Recognise that the salary changed → split into two periods</span><div class="calc">Period 1: April – September 2025 (6 months) at Basic ₹50,000
+Period 2: October 2025 – March 2026 (6 months) at Basic ₹60,000
+HRA must be computed SEPARATELY for each period and the exempt amounts added.</div></div>
+          <div class="step"><span class="label">Step 2 — Period 1 (Apr–Sep)</span>
+            <div class="calc">Basic = ₹50,000 p.m. · DA = 20% × 50,000 = ₹10,000 p.m.
+Salary for HRA = (50,000 + 10,000) × 6 = ₹3,60,000
+HRA received = 40% × 50,000 = ₹20,000 p.m. × 6 = ₹1,20,000
+Rent paid = 25,000 × 6 = ₹1,50,000</div>
+            <table class="calc-table">
+              <tr><th>Limit</th><th>Calculation</th><th class="num">₹</th></tr>
+              <tr><td>(i) Actual HRA received</td><td>20,000 × 6</td><td class="num">1,20,000</td></tr>
+              <tr><td>(ii) Rent paid − 10% of salary</td><td>1,50,000 − 36,000</td><td class="num">1,14,000</td></tr>
+              <tr><td>(iii) 50% of salary (Mumbai = metro)</td><td>50% × 3,60,000</td><td class="num">1,80,000</td></tr>
+              <tr class="total"><td colspan="2">Exempt for Period 1 (least)</td><td class="num">1,14,000</td></tr>
+            </table>
+          </div>
+          <div class="step"><span class="label">Step 3 — Period 2 (Oct–Mar)</span>
+            <div class="calc">Basic = ₹60,000 p.m. · DA = 20% × 60,000 = ₹12,000 p.m.
+Salary for HRA = (60,000 + 12,000) × 6 = ₹4,32,000
+HRA received = 40% × 60,000 = ₹24,000 p.m. × 6 = ₹1,44,000
+Rent paid = 25,000 × 6 = ₹1,50,000</div>
+            <table class="calc-table">
+              <tr><th>Limit</th><th>Calculation</th><th class="num">₹</th></tr>
+              <tr><td>(i) Actual HRA received</td><td>24,000 × 6</td><td class="num">1,44,000</td></tr>
+              <tr><td>(ii) Rent paid − 10% of salary</td><td>1,50,000 − 43,200</td><td class="num">1,06,800</td></tr>
+              <tr><td>(iii) 50% of salary (metro)</td><td>50% × 4,32,000</td><td class="num">2,16,000</td></tr>
+              <tr class="total"><td colspan="2">Exempt for Period 2 (least)</td><td class="num">1,06,800</td></tr>
+            </table>
+          </div>
+          <div class="step"><span class="label">Step 4 — Combine</span>
+            <table class="calc-table">
+              <tr><th>Particulars</th><th class="num">₹</th></tr>
+              <tr><td>Total HRA received (1,20,000 + 1,44,000)</td><td class="num">2,64,000</td></tr>
+              <tr><td>Less: Total exempt (1,14,000 + 1,06,800)</td><td class="num">(2,20,800)</td></tr>
+              <tr class="total"><td>Taxable HRA</td><td class="num">43,200</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="answer-final">Answer: Taxable HRA = ₹43,200</div>
+        <div class="trap" style="margin:0 16px 14px"><strong>⚠ Why period-wise matters.</strong> If you had wrongly averaged and done one yearly calculation on total salary ₹7,92,000, you would get a different exempt figure. The Rule 2A "least of three" test must be applied to <strong>each period separately</strong> whenever salary, rent or city changes. The same applies if he shifts from a metro to a non-metro mid-year (50% for one period, 40% for the other).</div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice — mixed allowances, all four buckets <span class="exc-tag">10 marks</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Jacob is employed in Kochi (non-metro). Basic ₹45,000 p.m.; DA ₹9,000 p.m. (enters retirement benefits); HRA ₹16,000 p.m., rent paid ₹15,000 p.m.; Children Education Allowance ₹600 p.m. per child for 3 children; Hostel Expenditure Allowance ₹700 p.m. for 2 children; Uniform Allowance ₹1,800 p.m. (actual spend ₹1,100 p.m.); Tiffin Allowance ₹800 p.m.; Servant Allowance ₹2,500 p.m. Compute his total taxable allowances for the year.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — HRA (Kochi is NON-metro → 40%)</span>
+              <div class="calc">Salary for HRA = (45,000 + 9,000) × 12 = ₹6,48,000</div>
+              <table class="calc-table">
+                <tr><th>Limit</th><th>Calculation</th><th class="num">₹</th></tr>
+                <tr><td>(i) Actual HRA received</td><td>16,000 × 12</td><td class="num">1,92,000</td></tr>
+                <tr><td>(ii) Rent paid − 10% of salary</td><td>(15,000 × 12) − 64,800</td><td class="num">1,15,200</td></tr>
+                <tr><td>(iii) 40% of salary (non-metro)</td><td>40% × 6,48,000</td><td class="num">2,59,200</td></tr>
+                <tr class="total"><td colspan="2">Exempt (least)</td><td class="num">1,15,200</td></tr>
+              </table>
+              <div class="calc">Taxable HRA = 1,92,000 − 1,15,200 = ₹76,800</div>
+            </div>
+            <div class="step"><span class="label">Step 2 — Children Education Allowance (3 children, but cap is 2)</span><div class="calc">Received = 600 × 3 children × 12 = ₹21,600
+Exempt = ₹100 p.m. per child for a MAXIMUM OF 2 children = 100 × 2 × 12 = ₹2,400
+Taxable = 21,600 − 2,400 = ₹19,200</div></div>
+            <div class="step"><span class="label">Step 3 — Hostel Expenditure Allowance (2 children)</span><div class="calc">Received = 700 × 2 × 12 = ₹16,800
+Exempt = ₹300 p.m. per child, max 2 children = 300 × 2 × 12 = ₹7,200
+Taxable = 16,800 − 7,200 = ₹9,600</div></div>
+            <div class="step"><span class="label">Step 4 — Uniform Allowance (exempt as spent)</span><div class="calc">Received = 1,800 × 12 = ₹21,600
+Exempt = actual spend = 1,100 × 12 = ₹13,200
+Taxable = 21,600 − 13,200 = ₹8,400</div></div>
+            <div class="step"><span class="label">Step 5 — Fully taxable allowances</span><div class="calc">Tiffin Allowance = 800 × 12 = ₹9,600 (fully taxable)
+Servant Allowance = 2,500 × 12 = ₹30,000 (fully taxable)</div></div>
+            <div class="step"><span class="label">Step 6 — Total</span>
+              <table class="calc-table">
+                <tr><th>Allowance</th><th class="num">Taxable (₹)</th></tr>
+                <tr><td>House Rent Allowance</td><td class="num">76,800</td></tr>
+                <tr><td>Children Education Allowance</td><td class="num">19,200</td></tr>
+                <tr><td>Hostel Expenditure Allowance</td><td class="num">9,600</td></tr>
+                <tr><td>Uniform Allowance</td><td class="num">8,400</td></tr>
+                <tr><td>Tiffin Allowance</td><td class="num">9,600</td></tr>
+                <tr><td>Servant Allowance</td><td class="num">30,000</td></tr>
+                <tr class="total"><td>Total Taxable Allowances</td><td class="num">1,53,600</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="answer-final">Answer: Total taxable allowances = ₹1,53,600</div>
+          <div class="trap"><strong>⚠ Two traps:</strong> (1) He has THREE children, but the CEA exemption is capped at 2 children — you still count all 3 in the amount received, but exempt only 2. (2) Kochi is NOT a metro. Only Delhi, Mumbai, Kolkata and Chennai get 50%; everywhere else is 40%, however big the city.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1183,6 +1474,113 @@ Both satisfied</div></div>
               <tr class="total"><td colspan="2">Taxable RFA = 4,60,800 × 7.5%</td><td class="num">34,560</td></tr>
             </table>
           </div>
+        </div>
+      </div>
+
+      <div class="rule-box">
+        <div class="rb-label">HOW TO SOLVE any accommodation sum — ask 4 questions in order</div>
+        <table class="ref-table">
+          <tr><th>Ask</th><th>Then do</th></tr>
+          <tr><td>1. Is he a GOVERNMENT employee?</td><td>Yes → value = licence fee fixed by government. Stop. No → continue.</td></tr>
+          <tr><td>2. Does the employer OWN the house or has he HIRED it?</td><td>OWNED → apply the population % (5 / 7.5 / 10). HIRED → lower of actual rent paid by employer, or 10% of salary.</td></tr>
+          <tr><td>3. Is it FURNISHED?</td><td>Yes → add 10% p.a. of the cost of furniture (or actual hire charges).</td></tr>
+          <tr><td>4. Does the employee PAY any rent to the employer?</td><td>Yes → deduct that rent from the value.</td></tr>
+        </table>
+        <div class="calc">Salary for accommodation = Basic + DA(retirement part) + Bonus + Commission + ALL taxable allowances
+                          (EXCLUDE: other perquisites, employer's PF contribution, exempt allowances)
+If provided for only part of the year → take salary for those months only.</div>
+        <div class="trap"><strong>⚠ Population percentages apply ONLY to employer-OWNED houses.</strong> If the employer has taken the flat on lease, the percentages are irrelevant — you compare the actual lease rent with 10% of salary and take the lower.</div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice — Furnished accommodation with rent recovered <span class="exc-tag">10 marks</span></div>
+        <div class="q-text"><strong>Q.</strong> Mr. Naveen is employed in Ahmedabad (population 45 lakh). Basic Salary ₹65,000 p.m.; DA ₹13,000 p.m. (enters retirement benefits); Bonus ₹50,000; Transport Allowance ₹1,500 p.m. (fully taxable). His employer provides him a house it owns, furnished with furniture costing ₹2,40,000, for the whole year. Mr. Naveen pays ₹4,000 per month to the employer for the accommodation. Compute the taxable value of the perquisite.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Salary for accommodation purposes</span>
+              <table class="calc-table">
+                <tr><th>Component</th><th>Calculation</th><th class="num">₹</th></tr>
+                <tr><td>Basic Salary</td><td>65,000 × 12</td><td class="num">7,80,000</td></tr>
+                <tr><td>Dearness Allowance (retirement terms)</td><td>13,000 × 12</td><td class="num">1,56,000</td></tr>
+                <tr><td>Bonus</td><td>—</td><td class="num">50,000</td></tr>
+                <tr><td>Transport Allowance (taxable allowance)</td><td>1,500 × 12</td><td class="num">18,000</td></tr>
+                <tr class="total"><td colspan="2">Salary for accommodation</td><td class="num">10,04,000</td></tr>
+              </table>
+            </div>
+            <div class="step"><span class="label">Step 2 — Owned by employer, population 45 lakh → above 40 lakh → 10%</span><div class="calc">Unfurnished value = 10% × 10,04,000 = ₹1,00,400</div></div>
+            <div class="step"><span class="label">Step 3 — Add furniture (it is FURNISHED)</span><div class="calc">10% p.a. of cost of furniture = 10% × 2,40,000 = ₹24,000</div></div>
+            <div class="step"><span class="label">Step 4 — Less rent recovered from the employee</span>
+              <table class="calc-table">
+                <tr><th>Particulars</th><th class="num">₹</th></tr>
+                <tr><td>Unfurnished value (10% of salary)</td><td class="num">1,00,400</td></tr>
+                <tr><td>Add: Furniture (10% of ₹2,40,000)</td><td class="num">24,000</td></tr>
+                <tr class="total"><td>Gross value of the perquisite</td><td class="num">1,24,400</td></tr>
+                <tr><td>Less: Rent paid by employee (4,000 × 12)</td><td class="num">(48,000)</td></tr>
+                <tr class="total"><td>Taxable value of accommodation</td><td class="num">76,400</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="answer-final">Answer: Taxable value of the perquisite = ₹76,400</div>
+          <div class="note-box">Note the order: furniture is ADDED before the employee's rent is DEDUCTED. Deducting the rent first and then adding furniture gives the same figure here, but the standard presentation is add-then-deduct and examiners look for it.</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice — Interest-free loan from employer <span class="exc-tag">5 marks</span></div>
+        <div class="q-text"><strong>Q.</strong> On 1st April 2025 Mr. Suraj's employer gave him an interest-free loan of ₹3,00,000 to buy a car, repayable in 12 equal monthly instalments of ₹25,000 beginning 30th April 2025. The SBI lending rate for such a loan as on 1-4-2025 was 9% per annum. Compute the value of the perquisite.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Is the loan within the exempt limit?</span><div class="calc">A loan is exempt only if the total does not exceed ₹20,000.
+₹3,00,000 far exceeds that → the perquisite must be valued.</div></div>
+            <div class="step"><span class="label">Step 2 — The rule</span><div class="calc">Perquisite = interest at the SBI rate as on 1-4-2025, calculated on the MAXIMUM OUTSTANDING BALANCE as at the last day of EACH month, less any interest actually charged by the employer (here, Nil).</div></div>
+            <div class="step"><span class="label">Step 3 — Month-end outstanding balances</span>
+              <table class="calc-table">
+                <tr><th>Month end</th><th class="num">Balance (₹)</th><th>Month end</th><th class="num">Balance (₹)</th></tr>
+                <tr><td>April</td><td class="num">2,75,000</td><td>October</td><td class="num">1,25,000</td></tr>
+                <tr><td>May</td><td class="num">2,50,000</td><td>November</td><td class="num">1,00,000</td></tr>
+                <tr><td>June</td><td class="num">2,25,000</td><td>December</td><td class="num">75,000</td></tr>
+                <tr><td>July</td><td class="num">2,00,000</td><td>January</td><td class="num">50,000</td></tr>
+                <tr><td>August</td><td class="num">1,75,000</td><td>February</td><td class="num">25,000</td></tr>
+                <tr><td>September</td><td class="num">1,50,000</td><td>March</td><td class="num">Nil</td></tr>
+                <tr class="total"><td colspan="3">Total of the 12 month-end balances</td><td class="num">16,50,000</td></tr>
+              </table>
+            </div>
+            <div class="step"><span class="label">Step 4 — Value of the perquisite</span><div class="calc">Interest for one month on each balance = balance × 9% ÷ 12
+Perquisite = 16,50,000 × 9% ÷ 12 = ₹12,375
+Less: interest actually charged by employer = Nil
+Taxable perquisite = ₹12,375</div></div>
+          </div>
+          <div class="answer-final">Answer: Value of the interest-free loan perquisite = ₹12,375</div>
+          <div class="note-box"><strong>If instead the loan of ₹3,00,000 had stayed outstanding for the whole year</strong> with no repayments, the perquisite would simply be 9% × 3,00,000 = ₹27,000. The instalment version is harder only because you must sum the declining monthly balances first.</div>
+        </div>
+      </div>
+
+      <div class="q-block practice">
+        <div class="q-head">Practice — Which perquisites are taxable? <span class="exc-tag">5 marks · theory-application</span></div>
+        <div class="q-text"><strong>Q.</strong> State whether each of the following perquisites received by Mr. Deepak from his employer is Taxable or Exempt, giving a one-line reason:
+        <br>(1) Reimbursement of his mobile phone bill of ₹2,000 p.m., used for both official and personal purposes
+        <br>(2) Tea and snacks provided in the office, worth ₹800 p.m.
+        <br>(3) Free lunch provided in the office canteen, worth ₹1,500 p.m.
+        <br>(4) Reimbursement of ₹40,000 spent on his mother's treatment at a Government hospital (she is dependent on him)
+        <br>(5) Reimbursement of ₹60,000 spent on his own treatment at a private unapproved nursing home
+        <br>(6) Fixed Medical Allowance of ₹1,200 p.m., the whole of which he spent on medicines
+        <br>(7) Hotel accommodation for 12 days provided on his transfer to a new city</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <table class="calc-table">
+            <tr><th>Perquisite</th><th>Treatment</th><th class="num">Taxable (₹)</th><th>Reason</th></tr>
+            <tr><td>(1) Mobile bill reimbursement ₹2,000 p.m.</td><td><strong>Exempt</strong></td><td class="num">Nil</td><td>Telephone/mobile provided or reimbursed by the employer is fully exempt, even where there is personal use</td></tr>
+            <tr><td>(2) Tea and snacks ₹800 p.m.</td><td><strong>Exempt</strong></td><td class="num">Nil</td><td>Tea, coffee and non-alcoholic beverages/snacks at the workplace are exempt</td></tr>
+            <tr><td>(3) Free lunch ₹1,500 p.m.</td><td><strong>Taxable</strong></td><td class="num">18,000</td><td>Meals/lunch do not enjoy the snacks exemption</td></tr>
+            <tr><td>(4) Mother's treatment at a Government hospital, ₹40,000</td><td><strong>Exempt</strong></td><td class="num">Nil</td><td>Treatment of a dependent parent at a Government hospital is exempt in full</td></tr>
+            <tr><td>(5) Own treatment at a private unapproved nursing home, ₹60,000</td><td><strong>Taxable</strong></td><td class="num">60,000</td><td>Treatment at a private or unapproved hospital is taxable</td></tr>
+            <tr><td>(6) Fixed Medical Allowance ₹1,200 p.m.</td><td><strong>Taxable</strong></td><td class="num">14,400</td><td>A fixed medical ALLOWANCE is always fully taxable, even if entirely spent on medicines — it is an allowance, not a reimbursement</td></tr>
+            <tr><td>(7) Hotel accommodation for 12 days on transfer</td><td><strong>Exempt</strong></td><td class="num">Nil</td><td>Hotel accommodation on transfer is exempt for up to 15 days; 12 days is within the limit</td></tr>
+            <tr class="total"><td colspan="2">Total taxable perquisites</td><td class="num">92,400</td><td></td></tr>
+          </table>
+          <div class="trap"><strong>⚠ Item (6) is the key distinction of this whole topic.</strong> A medical <em>reimbursement</em> against actual bills can be exempt; a fixed medical <em>allowance</em> paid every month is ALWAYS fully taxable, no matter how it is spent. Examiners test this pair constantly. Similarly, note how (4) and (5) differ only by the type of hospital.</div>
         </div>
       </div>
     </div>
@@ -2844,6 +3242,290 @@ Add: Cess @ 4% = 2,28,550 × 4% = ₹9,142</div></div>
           <br><strong>1. HIRED accommodation, not owned.</strong> The population percentages (5% / 7.5% / 10%) apply only to employer-OWNED houses. For a hired house the rule is "lower of actual rent paid or 10% of salary". Anyone who applied Delhi's 10% slab as if it were owned would still reach ₹1,89,600 by coincidence here — but state the correct rule, because the ₹3,60,000 rent is what makes the comparison necessary.
           <br><strong>2. The PF excess is NIL.</strong> The employer contributed 14% of BASIC (₹1,84,800), but the limit is 12% of BASIC + DA (₹1,90,080). Because DA is large, the limit exceeds the contribution and nothing is taxable. Write "Nil" — do not skip the row, and do not assume 14% &gt; 12% means there must be an excess.
           <br><strong>3. 2.0 litre is a BIG car</strong> → ₹2,400, not ₹1,800.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOUSE PROPERTY ================= -->
+<section class="panel" id="hp">
+  <div class="panel-intro" style="background:#fbeceb;border-color:#a3312a;color:#a3312a"><strong>⚠ NOT IN YOUR EXAM — your syllabus stops at Income from Salary (Unit I + Unit II).</strong><br>The previous-year paper you shared is course code <strong>BBA 301-5</strong>, while yours is <strong>BBA303-5</strong> — a different syllabus version, which is why it contained House Property. Skip this tab for exam prep. It is kept only as reference, and because the question you asked about (Drill 1) came from that paper.</div>
+
+  <div class="topic">
+    <div class="topic-head"><h2>THE METHOD — 6 steps, never vary the order</h2><span class="head-right"><span class="chapter-tag">Chapter 3 · Unit III</span></span></div>
+    <div class="topic-body">
+      <div class="rule-box">
+        <div class="calc">STEP 1  Expected Rent  = HIGHER of (MRV, FRV)
+                       then CAPPED at Standard Rent, if a Standard Rent is given
+
+STEP 2  Actual Rent Receivable = (rent p.m. × 12) − unrealised rent
+                                 ↑ do NOT subtract vacancy here
+
+STEP 3  GAV before vacancy = HIGHER of (Expected Rent, Actual Rent Receivable)
+
+STEP 4  Gross Annual Value = Step 3 − loss due to vacancy
+
+STEP 5  Net Annual Value = GAV − municipal taxes ACTUALLY PAID BY THE OWNER
+
+STEP 6  Income = NAV − 30% of NAV (Sec 24a) − interest on loan (Sec 24b)</div>
+
+        <div class="rb-label">The three deductions each come off at a DIFFERENT point</div>
+        <table class="ref-table">
+          <tr><th>Deduction</th><th>Comes off</th><th>Why</th></tr>
+          <tr><td>Unrealised rent</td><td>from the ACTUAL RENT, before you compare with Expected Rent</td><td>Rent you never received was never your income</td></tr>
+          <tr><td>Vacancy loss</td><td>from the GAV, AFTER the comparison</td><td>Sec 23(1)(c) gives relief for vacancy separately</td></tr>
+          <tr><td>Municipal taxes</td><td>from the GAV, to arrive at NAV</td><td>Only taxes borne by the owner and actually paid during the year</td></tr>
+        </table>
+        <div class="trap"><strong>⚠ The single biggest mistake:</strong> deducting unrealised rent and vacancy together in one go. They come off at two different stages, and doing them together changes the answer. Follow the six steps mechanically.</div>
+
+        <div class="rb-label">Three quick rules that decide most questions</div>
+        <ul>
+          <li><strong>Standard Rent is a CEILING, not a candidate.</strong> First take the higher of MRV and FRV, then bring it down to Standard Rent only if Standard Rent is lower. Never pick Standard Rent just because it is the highest number.</li>
+          <li><strong>Only the OWNER's municipal taxes are deductible.</strong> If the agreement says the tenant pays 50%, deduct only the owner's 50%. If the owner has not actually paid them during the year, deduct nothing.</li>
+          <li><strong>The 30% is always 30% of NAV</strong> — never of GAV, never of the rent, and it is allowed regardless of whether the owner actually spent anything on repairs.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head"><h2>Drill 1 — YOUR QUESTION, fully explained</h2><span class="head-right"><span class="chapter-tag">PY Paper Q4a Part 2</span><span class="marks">5 marks</span></span></div>
+    <div class="topic-body">
+      <div class="q-block">
+        <div class="q-text"><strong>Q.</strong> Calculate the NAV of a house let out for residential purposes to a tenant.
+        <table class="calc-table">
+          <tr><th>Particulars</th><th class="num">Amount (₹)</th></tr>
+          <tr><td>MRV (Municipal Rental Value)</td><td class="num">1,70,000</td></tr>
+          <tr><td>FRV (Fair Rental Value)</td><td class="num">1,80,000</td></tr>
+          <tr><td>Standard Rent</td><td class="num">1,60,000</td></tr>
+          <tr><td>Actual rent received @ ₹15,500 p.m.</td><td class="num">1,86,000</td></tr>
+        </table>
+        The house remained vacant for one month during the previous year. The rent for two months could not be realised. Municipal taxes amounted to ₹1,50,000, of which 50% is to be paid by the tenant as per the agreement.</div>
+        <div class="steps">
+          <div class="step"><span class="label">Step 1 — Expected Rent (watch the Standard Rent cap)</span>
+            <div class="calc">Higher of MRV (1,70,000) and FRV (1,80,000) = ₹1,80,000
+Standard Rent is ₹1,60,000, which is LOWER → the expected rent is pulled DOWN to it
+Expected Rent = ₹1,60,000</div>
+            <div class="note-box">This is the whole point of the question. Standard Rent is a legal ceiling under Rent Control — the owner cannot lawfully expect more than ₹1,60,000, so that becomes the expected rent even though FRV is higher.</div>
+          </div>
+          <div class="step"><span class="label">Step 2 — Actual Rent Receivable (deduct unrealised rent only)</span>
+            <div class="calc">Rent for the full year = 15,500 × 12 = ₹1,86,000
+Less: unrealised rent for 2 months = 15,500 × 2 = ₹31,000
+Actual Rent Receivable = ₹1,55,000
+
+Do NOT deduct the vacancy month here — that comes later.</div>
+          </div>
+          <div class="step"><span class="label">Step 3 — GAV before vacancy</span>
+            <div class="calc">Higher of Expected Rent (1,60,000) and Actual Rent Receivable (1,55,000)
+= ₹1,60,000</div>
+          </div>
+          <div class="step"><span class="label">Step 4 — Less: loss due to vacancy (1 month)</span>
+            <div class="calc">1,60,000 − (15,500 × 1) = 1,60,000 − 15,500
+Gross Annual Value = ₹1,44,500</div>
+          </div>
+          <div class="step"><span class="label">Step 5 — Less: municipal taxes borne by the OWNER</span>
+            <div class="calc">Total municipal taxes = ₹1,50,000
+Tenant pays 50% per the agreement → owner's share = 50% × 1,50,000 = ₹75,000
+Only the owner's ₹75,000 is deductible; the tenant's ₹75,000 is NOT.</div>
+          </div>
+          <div class="step"><span class="label">Step 6 — Net Annual Value</span>
+            <table class="calc-table">
+              <tr><th>Particulars</th><th class="num">₹</th></tr>
+              <tr><td>Gross Annual Value</td><td class="num">1,44,500</td></tr>
+              <tr><td>Less: Municipal taxes paid by the owner (50% of 1,50,000)</td><td class="num">(75,000)</td></tr>
+              <tr class="total"><td>Net Annual Value</td><td class="num">69,500</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="answer-final">Answer: Net Annual Value = ₹69,500</div>
+        <div class="trap" style="margin:0 16px 14px"><strong>⚠ Three traps in this one question:</strong> (1) Standard Rent ₹1,60,000 caps the expected rent, pulling it below FRV — most students take ₹1,80,000 and lose the question at Step 1. (2) Unrealised rent (2 months) and vacancy (1 month) come off at DIFFERENT stages. (3) Only 50% of the ₹1,50,000 municipal tax belongs to the owner — the ₹1,50,000 figure is deliberately large to tempt you into deducting all of it.</div>
+        <div class="note-box" style="margin:0 16px 16px"><strong>If the question had gone on to ask for Income from House Property</strong> (rather than stopping at NAV), you would continue: NAV ₹69,500 − 30% of NAV (₹20,850) − interest on loan = Income. Read the last line of the question carefully — "calculate the NAV" means stop at ₹69,500.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head"><h2>Drill 2 — no Standard Rent given</h2><span class="head-right"><span class="marks">5 marks</span></span></div>
+    <div class="topic-body">
+      <div class="q-block practice">
+        <div class="q-text"><strong>Q.</strong> Compute the Net Annual Value: MRV ₹2,00,000 p.a.; FRV ₹2,20,000 p.a.; no Standard Rent applies; actual rent ₹20,000 per month. The house was vacant for 2 months and rent for 1 month could not be realised. Municipal taxes of ₹24,000 were paid by the owner.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Expected Rent</span><div class="calc">Higher of MRV (2,00,000) and FRV (2,20,000) = ₹2,20,000
+No Standard Rent → no capping
+Expected Rent = ₹2,20,000</div></div>
+            <div class="step"><span class="label">Step 2 — Actual Rent Receivable</span><div class="calc">Full year = 20,000 × 12 = ₹2,40,000
+Less: unrealised rent (1 month) = ₹20,000
+Actual Rent Receivable = ₹2,20,000</div></div>
+            <div class="step"><span class="label">Step 3 — GAV before vacancy</span><div class="calc">Higher of 2,20,000 and 2,20,000 = ₹2,20,000 (they happen to be equal)</div></div>
+            <div class="step"><span class="label">Step 4 — Less: vacancy (2 months)</span><div class="calc">2,20,000 − (20,000 × 2) = ₹1,80,000 = Gross Annual Value</div></div>
+            <div class="step"><span class="label">Step 5 — Net Annual Value</span>
+              <table class="calc-table">
+                <tr><th>Particulars</th><th class="num">₹</th></tr>
+                <tr><td>Gross Annual Value</td><td class="num">1,80,000</td></tr>
+                <tr><td>Less: Municipal taxes paid by owner</td><td class="num">(24,000)</td></tr>
+                <tr class="total"><td>Net Annual Value</td><td class="num">1,56,000</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="answer-final">Answer: Net Annual Value = ₹1,56,000</div>
+          <div class="note-box">When no Standard Rent is mentioned, simply skip the capping step — do not invent one. The whole municipal tax is deductible here because the question says the owner paid it.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head"><h2>Drill 3 — Standard Rent binds, no vacancy</h2><span class="head-right"><span class="marks">5 marks</span></span></div>
+    <div class="topic-body">
+      <div class="q-block practice">
+        <div class="q-text"><strong>Q.</strong> Compute the Net Annual Value: MRV ₹2,50,000 p.a.; FRV ₹2,80,000 p.a.; Standard Rent ₹2,60,000 p.a.; actual rent ₹24,000 per month. The property was let throughout the year with no vacancy, but rent for 3 months could not be realised. Municipal taxes for the year were ₹40,000, half of which was borne by the tenant.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Expected Rent</span><div class="calc">Higher of MRV (2,50,000) and FRV (2,80,000) = ₹2,80,000
+Capped at Standard Rent ₹2,60,000 (which is lower)
+Expected Rent = ₹2,60,000</div></div>
+            <div class="step"><span class="label">Step 2 — Actual Rent Receivable</span><div class="calc">Full year = 24,000 × 12 = ₹2,88,000
+Less: unrealised rent (3 months) = 24,000 × 3 = ₹72,000
+Actual Rent Receivable = ₹2,16,000</div></div>
+            <div class="step"><span class="label">Step 3 — GAV</span><div class="calc">Higher of Expected Rent (2,60,000) and ARR (2,16,000) = ₹2,60,000
+No vacancy → nothing to deduct at Step 4
+Gross Annual Value = ₹2,60,000</div></div>
+            <div class="step"><span class="label">Step 4 — Net Annual Value</span>
+              <table class="calc-table">
+                <tr><th>Particulars</th><th class="num">₹</th></tr>
+                <tr><td>Gross Annual Value</td><td class="num">2,60,000</td></tr>
+                <tr><td>Less: Municipal taxes borne by owner (half of 40,000)</td><td class="num">(20,000)</td></tr>
+                <tr class="total"><td>Net Annual Value</td><td class="num">2,40,000</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="answer-final">Answer: Net Annual Value = ₹2,40,000</div>
+          <div class="trap"><strong>⚠ Notice what happened here.</strong> The unrealised rent pulled the actual rent (₹2,16,000) BELOW the expected rent (₹2,60,000) — but because there was no vacancy, the GAV stays at the expected rent of ₹2,60,000. Relief for a shortfall is given only when the shortfall is caused by VACANCY, not by a defaulting tenant.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head"><h2>Drill 4 — go all the way to Income from House Property</h2><span class="head-right"><span class="marks">10 marks</span></span></div>
+    <div class="topic-body">
+      <div class="q-block practice">
+        <div class="q-text"><strong>Q.</strong> Mr. Devaraj lets out a house. MRV ₹3,00,000 p.a.; FRV ₹2,90,000 p.a.; Standard Rent ₹3,20,000 p.a.; actual rent ₹26,000 per month. The house was vacant for 1 month; there was no unrealised rent. Municipal taxes of ₹45,000 were paid by Mr. Devaraj during the year, and he paid interest of ₹90,000 on a loan taken for the property. Compute his Income from House Property.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Expected Rent</span><div class="calc">Higher of MRV (3,00,000) and FRV (2,90,000) = ₹3,00,000
+Standard Rent is ₹3,20,000, which is HIGHER → no capping needed
+Expected Rent = ₹3,00,000</div>
+              <div class="note-box">Here the Standard Rent does NOT bind, because it is above the higher of MRV and FRV. Always check the direction — a Standard Rent only ever pulls the figure down, never up.</div>
+            </div>
+            <div class="step"><span class="label">Step 2 — Actual Rent Receivable</span><div class="calc">26,000 × 12 = ₹3,12,000
+No unrealised rent → nothing to deduct
+Actual Rent Receivable = ₹3,12,000</div></div>
+            <div class="step"><span class="label">Step 3 — GAV before vacancy</span><div class="calc">Higher of 3,00,000 and 3,12,000 = ₹3,12,000</div></div>
+            <div class="step"><span class="label">Step 4 — Less: vacancy (1 month)</span><div class="calc">3,12,000 − 26,000 = ₹2,86,000 = Gross Annual Value</div></div>
+            <div class="step"><span class="label">Step 5 &amp; 6 — Full computation</span>
+              <table class="calc-table">
+                <tr><th>Particulars</th><th class="num">₹</th></tr>
+                <tr><td>Gross Annual Value</td><td class="num">2,86,000</td></tr>
+                <tr><td>Less: Municipal taxes paid by the owner</td><td class="num">(45,000)</td></tr>
+                <tr class="total"><td>Net Annual Value</td><td class="num">2,41,000</td></tr>
+                <tr><td>Less: Standard deduction @ 30% of NAV (30% × 2,41,000)</td><td class="num">(72,300)</td></tr>
+                <tr><td>Less: Interest on borrowed capital u/s 24(b) — let-out, no ceiling</td><td class="num">(90,000)</td></tr>
+                <tr class="total"><td>Income from House Property</td><td class="num">78,700</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="answer-final">Answer: Income from House Property = ₹78,700</div>
+          <div class="note-box">For a LET-OUT property there is no ceiling on interest — the full ₹90,000 is allowed. The ₹2,00,000 / ₹30,000 ceilings apply only to a SELF-OCCUPIED house.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head"><h2>Drill 5 — Self-occupied house (always a loss)</h2><span class="head-right"><span class="marks">5 marks</span></span></div>
+    <div class="topic-body">
+      <div class="q-block practice">
+        <div class="q-text"><strong>Q.</strong> Mrs. Anitha occupies her only house herself. She took a housing loan in 2019 for its construction, which was completed in 2021. Interest payable on the loan for PY 2025-26 is ₹2,75,000. She paid municipal taxes of ₹22,000. Compute her Income from House Property.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Self-occupied → GAV is Nil</span><div class="calc">For a self-occupied house the Gross Annual Value is taken as NIL by law.
+Therefore NAV = Nil, and municipal taxes give NO benefit (NAV cannot go below zero).</div></div>
+            <div class="step"><span class="label">Step 2 — Standard deduction</span><div class="calc">30% of NAV = 30% × Nil = Nil</div></div>
+            <div class="step"><span class="label">Step 3 — Interest — check which ceiling applies</span>
+              <table class="calc-table">
+                <tr><th>Condition</th><th>Met?</th></tr>
+                <tr><td>Loan taken on or after 1-4-1999</td><td>Yes (2019)</td></tr>
+                <tr><td>Loan for purchase or CONSTRUCTION (not repair)</td><td>Yes</td></tr>
+                <tr><td>Construction completed within 5 years from the end of the year of borrowing</td><td>Yes (2019 → 2021)</td></tr>
+              </table>
+              <div class="calc">All three met → ceiling is ₹2,00,000
+Actual interest ₹2,75,000 exceeds the ceiling → allowed only ₹2,00,000</div>
+            </div>
+            <div class="step"><span class="label">Step 4 — Computation</span>
+              <table class="calc-table">
+                <tr><th>Particulars</th><th class="num">₹</th></tr>
+                <tr><td>Gross Annual Value (self-occupied)</td><td class="num">Nil</td></tr>
+                <tr><td>Less: Municipal taxes</td><td class="num">Nil</td></tr>
+                <tr class="total"><td>Net Annual Value</td><td class="num">Nil</td></tr>
+                <tr><td>Less: Standard deduction @ 30%</td><td class="num">Nil</td></tr>
+                <tr><td>Less: Interest u/s 24(b), restricted to the ceiling</td><td class="num">(2,00,000)</td></tr>
+                <tr class="total"><td>Income from House Property</td><td class="num">(2,00,000)</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="answer-final">Answer: LOSS from House Property = ₹2,00,000, available for set-off against other heads in the same year</div>
+          <div class="trap"><strong>⚠ Had any one of the three conditions failed</strong> — say the loan had been for repairs, or construction had taken more than 5 years — the ceiling would drop to ₹30,000 and the loss would be only ₹30,000. Always run the three-condition check before choosing the ceiling.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head"><h2>Drill 6 — Part self-occupied, part let out</h2><span class="head-right"><span class="marks">5 marks</span></span></div>
+    <div class="topic-body">
+      <div class="q-block practice">
+        <div class="q-text"><strong>Q.</strong> Mr. Harish owns a house in Mysuru consisting of two equal portions. He occupies one portion himself and lets out the other at ₹28,000 per month. Municipal valuation of the whole building is ₹3,60,000 p.a. and fair rent ₹4,00,000 p.a. Rent of one month could not be realised. Municipal taxes of ₹40,000 for the year were paid by Mr. Harish. Compute the NAV of both portions.</div>
+        <button class="reveal-btn" onclick="toggleSol(this)">Show Solution</button>
+        <div class="solution-hidden">
+          <div class="steps">
+            <div class="step"><span class="label">Step 1 — Split every figure in the ratio of the portions (here 50:50)</span>
+              <table class="calc-table">
+                <tr><th>Particulars</th><th class="num">Whole house (₹)</th><th class="num">Each half (₹)</th></tr>
+                <tr><td>Municipal Value</td><td class="num">3,60,000</td><td class="num">1,80,000</td></tr>
+                <tr><td>Fair Rent</td><td class="num">4,00,000</td><td class="num">2,00,000</td></tr>
+                <tr><td>Municipal taxes</td><td class="num">40,000</td><td class="num">20,000</td></tr>
+              </table>
+              <div class="calc">The RENT of ₹28,000 p.m. is NOT split — it already relates only to the let-out portion.</div>
+            </div>
+            <div class="step"><span class="label">Step 2 — Self-occupied portion</span>
+              <table class="calc-table">
+                <tr><th>Particulars</th><th class="num">₹</th></tr>
+                <tr><td>Gross Annual Value</td><td class="num">Nil</td></tr>
+                <tr><td>Less: Municipal taxes</td><td class="num">Nil</td></tr>
+                <tr class="total"><td>Net Annual Value</td><td class="num">Nil</td></tr>
+              </table>
+            </div>
+            <div class="step"><span class="label">Step 3 — Let-out portion</span>
+              <div class="calc">Expected Rent = higher of half-MRV (1,80,000) and half-FRV (2,00,000) = ₹2,00,000
+Actual Rent Receivable = (28,000 × 12) − (28,000 × 1 unrealised) = 3,36,000 − 28,000 = ₹3,08,000
+GAV = higher of 2,00,000 and 3,08,000 = ₹3,08,000  (no vacancy given)</div>
+              <table class="calc-table">
+                <tr><th>Particulars</th><th class="num">₹</th></tr>
+                <tr><td>Gross Annual Value</td><td class="num">3,08,000</td></tr>
+                <tr><td>Less: Municipal taxes (half share borne by owner)</td><td class="num">(20,000)</td></tr>
+                <tr class="total"><td>Net Annual Value</td><td class="num">2,88,000</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="answer-final">Answer: NAV — self-occupied portion ₹Nil · let-out portion ₹2,88,000</div>
+          <div class="note-box">Present the two portions as two separate columns or two separate statements. If the question also gave loan interest, you would apportion it too — the self-occupied share capped at ₹2,00,000, and the let-out share allowed in full.</div>
         </div>
       </div>
     </div>
